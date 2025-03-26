@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GCP Prepare</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /* Global Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+    }
+    /* Welcome Screen Styles */
+    #welcome-screen {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      background: #3498db;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+    }
+    #welcome-screen h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+    .exam-btn {
+      background: #fff;
+      color: #3498db;
+      border: none;
+      padding: 1rem 2rem;
+      margin: 0.5rem;
+      font-size: 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .exam-btn:hover {
+      background: #eaeaea;
+    }
+    /* Questions Container */
+    #questions-container {
+      display: none;
+      max-width: 800px;
+      margin: 1rem auto;
+      padding: 0 1rem;
+    }
+    .question-card {
+      background: #fff;
+      border-radius: 6px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      margin-bottom: 1rem;
+      padding: 1rem;
+    }
+    .question-number {
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 0.5rem;
+    }
+    .question-text {
+      margin-bottom: 0.5rem;
+      font-weight: bold;
+    }
+    .answers {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .answers li {
+      margin: 0.25rem 0;
+      padding: 0.5rem;
+      border-radius: 4px;
+      background: #ececec;
+      transition: background 0.3s;
+    }
+    .answers li:hover {
+      background: #ddd;
+    }
+    /* Correct answer highlighted */
+    .correct {
+      background: #a5f3a5;
+      border: 2px solid green;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <!-- Welcome Screen -->
+  <div id="welcome-screen">
+    <h1>Welcome to GCP Prepare</h1>
+    <p>Select the exam type below to begin:</p>
+    <button class="exam-btn" onclick="loadExamData('associate')">Associate Exam</button>
+    <button class="exam-btn" onclick="loadExamData('professional')">Professional Exam</button>
+  </div>
+
+  <!-- Questions will be rendered here -->
+  <div id="questions-container"></div>
+
+  <script>
+    // Function to dynamically load a script file
+    function loadScript(src, callback) {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = callback;
+      script.onerror = function() {
+        console.error('Error loading script: ' + src);
+      };
+      document.head.appendChild(script);
+    }
+
+    // Global function to render questions using the data array provided by the loaded script.
+    function renderQuestions(data) {
+      const container = document.getElementById('questions-container');
+      container.innerHTML = ''; // Clear any previous content
+      
+      data.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'question-card';
+
+        const qNumber = document.createElement('div');
+        qNumber.className = 'question-number';
+        qNumber.textContent = `Question ${item.question_number}:`;
+
+        const qText = document.createElement('div');
+        qText.className = 'question-text';
+        qText.textContent = item.question;
+
+        const answersList = document.createElement('ul');
+        answersList.className = 'answers';
+
+        item.answers.forEach(answer => {
+          const li = document.createElement('li');
+          li.textContent = answer;
+
+          // Support for multiple correct letters
+          let isCorrect = false;
+          for (let i = 0; i < item.correct_answer.length; i++) {
+            const correctLetter = item.correct_answer[i];
+            if (answer.startsWith(correctLetter + ".")) {
+              isCorrect = true;
+              break;
+            }
+          }
+          if (isCorrect) {
+            li.classList.add('correct');
+          }
+          answersList.appendChild(li);
+        });
+
+        card.appendChild(qNumber);
+        card.appendChild(qText);
+        card.appendChild(answersList);
+        container.appendChild(card);
+      });
+    }
+
+    // Function that loads exam data based on the exam type
+    function loadExamData(type) {
+      // Hide the welcome screen
+      document.getElementById('welcome-screen').style.display = 'none';
+      // Show the questions container
+      document.getElementById('questions-container').style.display = 'block';
+
+      // Determine which script file to load
+      let scriptFile = '';
+      if (type === 'associate') {
+        scriptFile = 'associate-questions.js';  // Must define a global array "associateQuestionsData"
+      } else if (type === 'professional') {
+        scriptFile = 'professional-questions.js';  // Must define a global array "professionalQuestionsData"
+      }
+
+      // Load the external JS file dynamically
+      loadScript(scriptFile, function() {
+        // After loading the file, choose the appropriate data array
+        if (type === 'associate') {
+          renderQuestions(associateQuestionsData);
+        } else if (type === 'professional') {
+          renderQuestions(professionalQuestionsData);
+        }
+      });
+    }
+  </script>
+</body>
+</html>
