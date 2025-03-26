@@ -96,9 +96,10 @@
     <p>Select the exam type below to begin:</p>
     <button class="exam-btn" onclick="loadExamData('associate')">Associate Exam</button>
     <button class="exam-btn" onclick="loadExamData('professional')">Professional Exam</button>
+    <button class="exam-btn" onclick="loadExamData('devops')">DevOps Exam</button>
   </div>
 
-  <!-- Questions will be rendered here -->
+  <!-- Questions Container -->
   <div id="questions-container"></div>
 
   <script>
@@ -113,10 +114,10 @@
       document.head.appendChild(script);
     }
 
-    // Global function to render questions using the data array provided by the loaded script.
+    // Global function to render questions on the page using the provided data array.
     function renderQuestions(data) {
       const container = document.getElementById('questions-container');
-      container.innerHTML = ''; // Clear any previous content
+      container.innerHTML = ''; // Clear any existing content
       
       data.forEach((item) => {
         const card = document.createElement('div');
@@ -136,8 +137,7 @@
         item.answers.forEach(answer => {
           const li = document.createElement('li');
           li.textContent = answer;
-
-          // Support for multiple correct letters
+          // Check if answer starts with any of the correct letters.
           let isCorrect = false;
           for (let i = 0; i < item.correct_answer.length; i++) {
             const correctLetter = item.correct_answer[i];
@@ -159,7 +159,7 @@
       });
     }
 
-    // Function that loads exam data based on the exam type
+    // Function that loads exam data based on exam type.
     function loadExamData(type) {
       // Hide the welcome screen
       document.getElementById('welcome-screen').style.display = 'none';
@@ -169,18 +169,22 @@
       // Determine which script file to load
       let scriptFile = '';
       if (type === 'associate') {
-        scriptFile = 'associate-questions.js';  // Must define a global array "associateQuestionsData"
+        scriptFile = 'associate-questions.js'; // Should define global variable "associateQuestionsData"
       } else if (type === 'professional') {
-        scriptFile = 'professional-questions.js';  // Must define a global array "professionalQuestionsData"
+        scriptFile = 'professional-questions.js'; // Should define global variable "professionalQuestionsData"
+      } else if (type === 'devops') {
+        scriptFile = 'devops-questions.js'; // Should define global variable "devopsQuestionsData"
       }
 
-      // Load the external JS file dynamically
+      // Dynamically load the external JS file
       loadScript(scriptFile, function() {
-        // After loading the file, choose the appropriate data array
+        // Once loaded, render questions based on the exam type
         if (type === 'associate') {
           renderQuestions(associateQuestionsData);
         } else if (type === 'professional') {
           renderQuestions(professionalQuestionsData);
+        } else if (type === 'devops') {
+          renderQuestions(devopsQuestionsData);
         }
       });
     }
