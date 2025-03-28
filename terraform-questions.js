@@ -476,7 +476,7 @@ const terraformQuestionsData = [
     {
         "question_number": 47,
         "question": "FILL BLANK -You need to specify a dependency manually.What resource meta-parameter can you use to make sure Terraform respects the dependency?Type your answer in the field provided. The text field is not case-sensitive and all variations of the correct answer are accepted.",
-        "answers": ["A. depends_on"],
+        "answers": ["depends_on"],
         "correct_answer": "depends_on"
     },
     {
@@ -619,13 +619,13 @@ const terraformQuestionsData = [
     {
         "question_number": 61,
         "question": "FILL BLANK -Which flag would you add to terraform plan to save the execution plan to a file?Type your answer in the field provided. The text field is not case-sensitive and all variations of the correct answer are accepted.",
-        "answers": [],
+        "answers": ["-out=FILENAME"],
         "correct_answer": "-out=FILENAME"
     },
     {
         "question_number": 62,
         "question": "FILL BLANK -What is the name of the default file where Terraform stores the state?Type your answer in the field provided. The text field is not case-sensitive and all variations of the correct answer are accepted.",
-        "answers": [],
+        "answers": ["Terraform.tfstate"],
         "correct_answer": "Terraform.tfstate"
     },
     {
@@ -1107,7 +1107,7 @@ const terraformQuestionsData = [
     {
         "question_number": 108,
         "question": "FILL BLANK -In the below configuration, how would you reference the module output vpc_id?Type your answer in the field provided. The text field is not case sensitive and all variations of the correct answer are accepted.",
-        "answers": [],
+        "answers": ["output \"outvpc_id\""],
         "correct_answer": "output \"outvpc_id\""
     },
     {
@@ -1959,7 +1959,7 @@ const terraformQuestionsData = [
     {
         "question_number": 191,
         "question": "FILL BLANK -You need to migrate a workspace to use a remote backend. After updating your configuration, what command do you run to perform the migration?Type your answer in the field provided. The text field is not case-sensitive and all variations of the correct answer are accepted.",
-        "answers": [],
+        "answers": ["terraform init"],
         "correct_answer": "terraform init"
     },
     {
