@@ -476,7 +476,7 @@ const terraformQuestionsData = [
     {
         "question_number": 47,
         "question": "FILL BLANK -You need to specify a dependency manually.What resource meta-parameter can you use to make sure Terraform respects the dependency?Type your answer in the field provided. The text field is not case-sensitive and all variations of the correct answer are accepted.",
-        "answers": [],
+        "answers": ["A. depends_on"],
         "correct_answer": "depends_on"
     },
     {
