@@ -64,7 +64,7 @@
     }
     .question-text {
       margin-bottom: 0.5rem;
-      font-weight: bold;
+      font-weight: normal;
     }
     .answers {
       margin: 0;
@@ -97,6 +97,7 @@
     <button class="exam-btn" onclick="loadExamData('associate')">Associate Exam</button>
     <button class="exam-btn" onclick="loadExamData('professional')">Professional Exam</button>
     <button class="exam-btn" onclick="loadExamData('devops')">DevOps Exam</button>
+    <button class="exam-btn" onclick="loadExamData('terraform')">terraform Exam</button>
   </div>
 
   <!-- Questions Container -->
@@ -174,6 +175,8 @@
         scriptFile = 'professional-questions.js'; // Should define global variable "professionalQuestionsData"
       } else if (type === 'devops') {
         scriptFile = 'devops-questions.js'; // Should define global variable "devopsQuestionsData"
+      } else if (type === 'terraform') {
+        scriptFile = 'terraform-questions.js'; // Should define global variable "devopsQuestionsData"
       }
 
       // Dynamically load the external JS file
@@ -185,7 +188,9 @@
           renderQuestions(professionalQuestionsData);
         } else if (type === 'devops') {
           renderQuestions(devopsQuestionsData);
-        }
+        } else if (type === 'terraform') {
+          renderQuestions(terraformQuestionsData);
+        } 
       });
     }
   </script>
