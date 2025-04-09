@@ -5,101 +5,250 @@
   <title>GCP Prepare</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <style>
-    /* Global Styles */
+    /* ExamTopics Styling */
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      background-color: #f8f9fa;
       margin: 0;
       padding: 0;
-      background: #f9f9f9;
     }
-    /* Welcome Screen Styles */
+    .discussion-container {
+      max-width: 800px;
+      margin: 15px auto;
+      background: #ffffff;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+    }
+    .discussion-header {
+      padding: 12px 15px;
+      background-color: #007bff;
+      color: white;
+      border-bottom: 1px solid #dee2e6;
+    }
+    .discussion-header-text {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .discussion-body {
+      padding: 15px;
+    }
+    .question-body {
+      margin: 0;
+      font-size: 14px;
+      color: #34495e;
+      line-height: 1.5;
+    }
+    .answer-options {
+      list-style: none;
+      padding: 0;
+      margin: 15px 0 0 0;
+    }
+    .answer-options li {
+      padding: 10px 15px;
+      margin: 8px 0;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      background: #ffffff;
+      position: relative;
+      transition: all 0.2s;
+    }
+    .answer-options li:hover {
+      background: #ddd;
+    }
+    .correct-answer {
+      background-color: #d4edda !important;
+      border-color: #28a745 !important;
+    }
+    .correct-answer::after {
+      content: "✓";
+      color: #28a745;
+      font-weight: bold;
+      position: absolute;
+      right: 15px;
+    }
+    .topic-label {
+      background-color: #007bff;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      float: right;
+    }
+    
+    /* Improved Welcome Screen Styles */
     #welcome-screen {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      background: #3498db;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #4285f4, #34a853, #fbbc05, #ea4335);
       color: #fff;
       text-align: center;
-      padding: 1rem;
+      padding: 2rem;
     }
-    #welcome-screen h1 {
-      font-size: 2rem;
+    
+    .welcome-container {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 12px;
+      padding: 2rem;
+      max-width: 800px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    
+    .welcome-container h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #4285f4;
+      font-weight: 700;
+    }
+    
+    .welcome-container p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #5f6368;
+    }
+    
+    .gcp-logo {
+      width: 120px;
       margin-bottom: 1.5rem;
     }
-    .exam-btn {
-      background: #fff;
-      color: #3498db;
-      border: none;
-      padding: 1rem 2rem;
-      margin: 0.5rem;
-      font-size: 1rem;
-      border-radius: 5px;
+    
+    .exam-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 20px;
+      width: 100%;
+    }
+    
+    .exam-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
       cursor: pointer;
-      transition: background 0.3s;
+      border: 1px solid #e0e0e0;
     }
-    .exam-btn:hover {
-      background: #eaeaea;
+    
+    .exam-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     }
+    
+    .exam-card-header {
+      padding: 15px;
+      background-color: #4285f4;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+    
+    .associate-header { background-color: #4285f4; }
+    .professional-header { background-color: #34a853; }
+    .devops-header { background-color: #fbbc05; }
+    .terraform-header { background-color: #ea4335; }
+    
+    .exam-card-body {
+      padding: 15px;
+      color: #5f6368;
+      font-size: 0.9rem;
+    }
+    
+    .exam-card-footer {
+      padding: 12px 15px;
+      background-color: #f8f9fa;
+      display: flex;
+      justify-content: center;
+    }
+    
+    .start-btn {
+      background: none;
+      color: #4285f4;
+      border: 2px solid #4285f4;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    .start-btn:hover {
+      background: #4285f4;
+      color: white;
+    }
+    
     /* Questions Container */
     #questions-container {
       display: none;
-      max-width: 800px;
-      margin: 1rem auto;
-      padding: 0 1rem;
+      padding: 20px;
     }
-    .question-card {
-      background: #fff;
-      border-radius: 6px;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      margin-bottom: 1rem;
-      padding: 1rem;
-    }
-    .question-number {
-      font-size: 1.1rem;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 0.5rem;
-    }
-    .question-text {
-      margin-bottom: 0.5rem;
-      font-weight: normal;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    .answers {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-    .answers li {
-      margin: 0.25rem 0;
-      padding: 0.5rem;
-      border-radius: 4px;
-      background: #ececec;
-      transition: background 0.3s;
-    }
-    .answers li:hover {
-      background: #ddd;
-    }
-    /* Correct answer highlighted */
-    .correct {
-      background: #a5f3a5;
-      border: 2px solid green;
-      font-weight: bold;
+    
+    /* Media Queries for Responsiveness */
+    @media (max-width: 768px) {
+      .exam-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .welcome-container {
+        padding: 1.5rem;
+      }
+      
+      .welcome-container h1 {
+        font-size: 2rem;
+      }
     }
   </style>
 </head>
 <body>
   <!-- Welcome Screen -->
   <div id="welcome-screen">
-    <h1>Welcome to GCP Prepare</h1>
-    <p>Select the exam type below to begin:</p>
-    <button class="exam-btn" onclick="loadExamData('associate')">Associate Exam</button>
-    <button class="exam-btn" onclick="loadExamData('professional')">Professional Exam</button>
-    <button class="exam-btn" onclick="loadExamData('devops')">DevOps Exam</button>
-    <button class="exam-btn" onclick="loadExamData('terraform')">terraform Exam</button>
+    <div class="welcome-container">
+      <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NyA0MCIgd2lkdGg9IjQ3IiBoZWlnaHQ9IjQwIj48cGF0aCBkPSJNOCAxYzAuNi0wLjEgMS4yLTAuMSAxLjkgMGMwLjcgMCAwLjMgMC42IDAuNCAwLjljMS4yIDMuNSAyLjMgNyAzLjUgMTAuNCAwLjIgMC43IDAuNCAxLjQgMC42IDIuMWMwLjEgMC40IDAuMyAwLjcgMC44IDAuNmMwLjcgMCAxLjMgMCAyIDBjMC45IDAgMS44LTAuMSAyLjcgMC4xcy0wLjQgMC43LTAuNyAxLjFjLTIuOSA0LjMtNS44IDguNi04LjggMTIuOWMtMC42IDAuOC0xLjEgMS43LTEuNyAyLjVjLTAuMiAwLjMtMC40IDAuNi0wLjYgMGMtMC4yLTAuNS0wLjMtMS0wLjUtMS41Yy0xLjgtNS40LTMuNi0xMC44LTUuNS0xNi4yYy0wLjItMC42LTAuNC0xLjItMC42LTEuOGMtMC4xLTAuNC0wLjEtMC45IDAuMy0xLjFzMS0wLjEgMS40LTAuMWMyLjQgMCAzLjktMC43IDQuNy0zYzAuNS0xLjUgMS0zIDEuNS00LjUgMC4xLTAuNSAwLjMtMC45IDAuMy0xLjRDOC44IDEuMSA4LjQgMS4xIDggMSIgZmlsbD0iIzQyODVmNCIvPjxwYXRoIGQ9Ik0zMi40IDEuMmMwLjctMC4yIDEuNC0wLjIgMi4xLTAuMmMxIDAuMSAxLjUgMSAxLjkgMS45YzIuMiA2LjMgNC4zIDEyLjYgNi41IDE4LjljMC4yIDAuNSAwLjQgMSAwLjUgMS41YzAuMSAwLjMtMC4xIDAuNS0wLjQgMC43cy0wLjcgMC4xLTEgMC4xYy0zLjUgMC03IDAtMTAuNCAwLjFjLTAuMiAwLTAuNC0wLjEtMC41LTAuMmMtMC4zLTAuMy0wLjItMC44IDAuMS0xLjFjMi45LTQuMyA1LjgtOC41IDguOC0xMi44YzAuNC0wLjUgMC42LTEuMi0wLjEtMS42cy0xLjUgMC0yLjIgMGMtMC40IDAtMC43IDAuMS0xLjEtMC4yLTAuMy0wLjMtMC40LTAuNy0wLjUtMS4xYy0xLjQtNC4xLTIuOC04LjMtNC4yLTEyLjQgMC0wLjItMC4xLTAuNC0wLjEtMC42YzAtMC4yIDAuMS0wLjUgMC4yLTAuNyAwLjgtMS41IDEuOS0yLjEgMy42LTEuOSAwLjYgMC4xIDEuMiAwLjEgMS44IDAuMmMwIDAuNS0wLjMgMS0wLjUgMS41Yy0wLjcgMi4xLTEuNCA0LjEtMi4xIDYuMmMtMC4xIDAuNC0wLjMgMC44LTAuNCAxLjJzMC4xIDAuNyAwLjQgMC45YzAuMyAwLjIgMC43IDAuMSAxIDAuMWMwLjkgMCAxLjkgMCAyLjggMC4xYzAuMyAwIDAuNiAwLjQgMC41IDAuN3MtMC4zIDAuNi0wLjUgMC45Yy0zLjEgNC42LTYuMyA5LjItOS40IDEzLjhjLTAuMiAwLjMtMC40IDAuNi0wLjMgMWMxLjkgNC40IDIuOSA5LjEgNC40IDEzLjZjMC4yIDAuNSAwLjEgMS4yIDAuOCAxLjNzMS41IDAuMSAyLjIgMC4xYzEgMCAxLjMtMC4yIDEuNy0xLjJzMC44LTEuOSAxLjItMi44YzMuMS03LjIgNi4yLTE0LjUgOS4zLTIxLjdjMC4zLTAuNiAwLjUtMS4yIDAuOC0xLjhjMC4xLTAuMiAwLjEtMC41IDAuNC0wLjVzMC42LTAuMSAwLjktMC4xYzIuMiAwIDQuNCAwIDYuNyAwYzAuNCAwIDAuOCAwIDEuMSAwLjNzMC4zIDAuNyAwLjEgMWMtMC43IDEuOS0xLjUgMy43LTIuMiA1LjVDNDEuMiAxOS45IDM3LjcgMjkgMzQuMyAzOGMtMC4xIDAuMy0wLjIgMC42LTAuNSAwLjhzLTAuNiAwLjItMC45IDAuMmMtMi41IDAtNSAwLTcuNSAwLTAuOCAwLTEuNC0wLjMtMS43LTEuMS0xLjYtNC41LTMuMi05LjEtNC44LTEzLjYtMC4yLTAuNC0wLjItMC42IDAuMS0xYzQuNC02LjUgOC44LTEzLjEgMTMuMS0xOS42YzAuMS0wLjIgMC4zLTAuNCAwLjItMC43IDAuMS0wLjYtMC41LTAuNi0wLjktMC42LTEuNCAwLTIuOCAwLTQuMiAwLTAuNiAwLTEtMC4zLTEuMi0wLjhzLTAuMy0xLjItMC41LTEuN2MtMS0zLTIuMS02LTMuMS05LjEgMC4xLTAuMi0wLjEtMC40IDAuMi0wLjYiIGZpbGw9IiMzNGE4NTMiLz48cGF0aCBkPSJNMzguOCAxLjF2MGMwLjEgMC4xIDAuMSAwLjEgMC4xIDAuMkMzOSAxLjIgMzguOSAxLjEgMzguOCAxLjEiIGZpbGw9IiM0Mjg1ZjQiLz48cGF0aCBkPSJNMzkgMS4zYzAuMSAwLjEgMC4xIDAuMyAwLjIgMC40YzAgMC4xIDAuMSAwLjIgMC4xIDAuM2MwLjEgMC4yIDAuMSAwLjQgMC4yIDAuNkMzOS4zIDIgMzkuMSAxLjcgMzkgMS4zIiBmaWxsPSIjZWE0MzM1Ii8+PC9zdmc+" class="gcp-logo" alt="GCP Logo">
+      <h1>GCP Certification Prep</h1>
+      <p>Select an exam type below to start practicing with real-world questions</p>
+      
+      <div class="exam-cards">
+        <div class="exam-card">
+          <div class="exam-card-header associate-header">Associate Cloud Engineer</div>
+          <div class="exam-card-body">
+            Test your knowledge of deploying applications, monitoring operations, and maintaining Google Cloud services.
+          </div>
+          <div class="exam-card-footer">
+            <button class="start-btn" onclick="loadExamData('associate')">Start Practice</button>
+          </div>
+        </div>
+        
+        <div class="exam-card">
+          <div class="exam-card-header professional-header">Professional Cloud Architect</div>
+          <div class="exam-card-body">
+            Challenge yourself with questions about designing secure, scalable, and reliable cloud architecture.
+          </div>
+          <div class="exam-card-footer">
+            <button class="start-btn" onclick="loadExamData('professional')">Start Practice</button>
+          </div>
+        </div>
+        
+        <div class="exam-card">
+          <div class="exam-card-header devops-header">Professional DevOps Engineer</div>
+          <div class="exam-card-body">
+            Practice with questions focused on CI/CD pipelines, monitoring, and service reliability.
+          </div>
+          <div class="exam-card-footer">
+            <button class="start-btn" onclick="loadExamData('devops')">Start Practice</button>
+          </div>
+        </div>
+        
+        <div class="exam-card">
+          <div class="exam-card-header terraform-header">Terraform Associate</div>
+          <div class="exam-card-body">
+            Test your knowledge of infrastructure as code and Terraform configuration for Google Cloud.
+          </div>
+          <div class="exam-card-footer">
+            <button class="start-btn" onclick="loadExamData('terraform')">Start Practice</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- Questions Container -->
@@ -113,8 +262,137 @@
       script.onload = callback;
       script.onerror = function() {
         console.error('Error loading script: ' + src);
+        
+        // If script loading fails, show sample data instead
+        const sampleData = getSampleData(src);
+        if (sampleData) {
+          callback();
+          window[getVarNameFromScript(src)] = sampleData;
+        }
       };
       document.head.appendChild(script);
+    }
+    
+    // Helper function to get variable name from script name
+    function getVarNameFromScript(scriptName) {
+      if (scriptName.includes('associate')) return 'associateQuestionsData';
+      if (scriptName.includes('professional')) return 'professionalQuestionsData';
+      if (scriptName.includes('devops')) return 'devopsQuestionsData';
+      if (scriptName.includes('terraform')) return 'terraformQuestionsData';
+      return '';
+    }
+    
+    // Function to get sample data if script loading fails
+    function getSampleData(scriptName) {
+      // Sample data for each exam type if JS files can't be loaded
+      const samples = {
+        'associate-questions.js': [
+          {
+            question_number: 1,
+            question_topic: "Cloud Fundamentals",
+            question: "You want to deploy a web application that can automatically scale to handle varying loads. Which GCP service should you use?",
+            answers: [
+              "Compute Engine",
+              "App Engine",
+              "Cloud Functions",
+              "Cloud Storage"
+            ],
+            correct_answer: "B"
+          },
+          {
+            question_number: 2,
+            question_topic: "Storage",
+            question: "Which storage option is best for frequently accessed structured data that requires transactions and strong consistency?",
+            answers: [
+              "Cloud Storage",
+              "Firestore",
+              "Cloud SQL",
+              "Bigtable"
+            ],
+            correct_answer: "C"
+          }
+        ],
+        'professional-questions.js': [
+          {
+            question_number: 1,
+            question_topic: "Networking",
+            question: "You need to connect your on-premises network to multiple VPC networks in GCP with high throughput. Which networking solution should you use?",
+            answers: [
+              "Cloud VPN",
+              "Direct Peering",
+              "Cloud Interconnect",
+              "VPC Network Peering"
+            ],
+            correct_answer: "C"
+          },
+          {
+            question_number: 2,
+            question_topic: "Security",
+            question: "Which IAM role provides the minimum permissions needed for a service account to write logs to Stackdriver?",
+            answers: [
+              "roles/logging.viewer",
+              "roles/logging.admin",
+              "roles/logging.logWriter",
+              "roles/monitoring.writer"
+            ],
+            correct_answer: "C"
+          }
+        ],
+        'devops-questions.js': [
+          {
+            question_number: 1,
+            question_topic: "CI/CD",
+            question: "You want to set up a CI/CD pipeline for your application that deploys to GKE. Which GCP service should you use?",
+            answers: [
+              "Cloud Source Repositories",
+              "Cloud Build",
+              "Cloud Deployment Manager",
+              "Cloud Composer"
+            ],
+            correct_answer: "B"
+          },
+          {
+            question_number: 2,
+            question_topic: "Monitoring",
+            question: "Which feature in Cloud Monitoring allows you to detect and alert on abnormal system behavior?",
+            answers: [
+              "Uptime checks",
+              "Dashboards",
+              "Alerting policies",
+              "Anomaly detection"
+            ],
+            correct_answer: "D"
+          }
+        ],
+        'terraform-questions.js': [
+          {
+            question_number: 1,
+            question_topic: "State Management",
+            question: "Where should you store Terraform state files in a team environment?",
+            answers: [
+              "Local machine",
+              "Git repository",
+              "Remote backend like GCS",
+              "Environment variables"
+            ],
+            correct_answer: "C"
+          },
+          {
+            question_number: 2,
+            question_topic: "Provisioning",
+            question: "Which Terraform command previews the changes that will be made to your infrastructure?",
+            answers: [
+              "terraform init",
+              "terraform plan",
+              "terraform apply",
+              "terraform validate"
+            ],
+            correct_answer: "B"
+          }
+        ]
+      };
+      
+      return samples[scriptName.split('/').pop()];
     }
 
     // Global function to render questions on the page using the provided data array.
@@ -123,42 +401,57 @@
       container.innerHTML = ''; // Clear any existing content
       
       data.forEach((item) => {
-        const card = document.createElement('div');
-        card.className = 'question-card';
-
-        const qNumber = document.createElement('div');
-        qNumber.className = 'question-number';
-        qNumber.textContent = `Question ${item.question_number}:`;
-
-        const qText = document.createElement('div');
-        qText.className = 'question-text';
-        qText.textContent = item.question;
-
+        // Create discussion container
+        const discussionContainer = document.createElement('div');
+        discussionContainer.className = 'discussion-container';
+        
+        // Create header
+        const header = document.createElement('div');
+        header.className = 'discussion-header';
+        
+        const headerText = document.createElement('div');
+        headerText.className = 'discussion-header-text';
+        headerText.innerHTML = `Question #${item.question_number} | <span class="topic-label">Topic ${item.question_topic || 'General'}</span>`;
+        
+        header.appendChild(headerText);
+        
+        // Create body
+        const body = document.createElement('div');
+        body.className = 'discussion-body';
+        
+        // Create question text
+        const question = document.createElement('p');
+        question.className = 'question-body';
+        question.textContent = item.question;
+        
+        // Create answers list
         const answersList = document.createElement('ul');
-        answersList.className = 'answers';
-
-        item.answers.forEach(answer => {
+        answersList.className = 'answer-options';
+        
+        // Process correct answers
+        const correctLetters = item.correct_answer
+          .replace(/[^A-Za-z]/g, '')
+          .toUpperCase()
+          .split('');
+          
+        item.answers.forEach((answer, index) => {
+          const letter = String.fromCharCode(65 + index);
           const li = document.createElement('li');
-          li.textContent = answer;
-          // Check if answer starts with any of the correct letters.
-          let isCorrect = false;
-          for (let i = 0; i < item.correct_answer.length; i++) {
-            const correctLetter = item.correct_answer[i];
-            if (answer.startsWith(correctLetter + ".")) {
-              isCorrect = true;
-              break;
-            }
+          li.textContent = `${letter}. ${answer}`;
+          
+          if (correctLetters.includes(letter)) {
+            li.classList.add('correct-answer');
           }
-          if (isCorrect) {
-            li.classList.add('correct');
-          }
+          
           answersList.appendChild(li);
         });
-
-        card.appendChild(qNumber);
-        card.appendChild(qText);
-        card.appendChild(answersList);
-        container.appendChild(card);
+        
+        // Assemble the components
+        body.appendChild(question);
+        body.appendChild(answersList);
+        discussionContainer.appendChild(header);
+        discussionContainer.appendChild(body);
+        container.appendChild(discussionContainer);
       });
     }
 
@@ -178,7 +471,7 @@
       } else if (type === 'devops') {
         scriptFile = 'devops-questions.js'; // Should define global variable "devopsQuestionsData"
       } else if (type === 'terraform') {
-        scriptFile = 'terraform-questions.js'; // Should define global variable "devopsQuestionsData"
+        scriptFile = 'terraform-questions.js'; // Should define global variable "terraformQuestionsData"
       }
 
       // Dynamically load the external JS file
