@@ -282,118 +282,7 @@
       return '';
     }
     
-    // Function to get sample data if script loading fails
-    function getSampleData(scriptName) {
-      // Sample data for each exam type if JS files can't be loaded
-      const samples = {
-        'associate-questions.js': [
-          {
-            question_number: 1,
-            question_topic: "Cloud Fundamentals",
-            question: "You want to deploy a web application that can automatically scale to handle varying loads. Which GCP service should you use?",
-            answers: [
-              "Compute Engine",
-              "App Engine",
-              "Cloud Functions",
-              "Cloud Storage"
-            ],
-            correct_answer: "B"
-          },
-          {
-            question_number: 2,
-            question_topic: "Storage",
-            question: "Which storage option is best for frequently accessed structured data that requires transactions and strong consistency?",
-            answers: [
-              "Cloud Storage",
-              "Firestore",
-              "Cloud SQL",
-              "Bigtable"
-            ],
-            correct_answer: "C"
-          }
-        ],
-        'professional-questions.js': [
-          {
-            question_number: 1,
-            question_topic: "Networking",
-            question: "You need to connect your on-premises network to multiple VPC networks in GCP with high throughput. Which networking solution should you use?",
-            answers: [
-              "Cloud VPN",
-              "Direct Peering",
-              "Cloud Interconnect",
-              "VPC Network Peering"
-            ],
-            correct_answer: "C"
-          },
-          {
-            question_number: 2,
-            question_topic: "Security",
-            question: "Which IAM role provides the minimum permissions needed for a service account to write logs to Stackdriver?",
-            answers: [
-              "roles/logging.viewer",
-              "roles/logging.admin",
-              "roles/logging.logWriter",
-              "roles/monitoring.writer"
-            ],
-            correct_answer: "C"
-          }
-        ],
-        'devops-questions.js': [
-          {
-            question_number: 1,
-            question_topic: "CI/CD",
-            question: "You want to set up a CI/CD pipeline for your application that deploys to GKE. Which GCP service should you use?",
-            answers: [
-              "Cloud Source Repositories",
-              "Cloud Build",
-              "Cloud Deployment Manager",
-              "Cloud Composer"
-            ],
-            correct_answer: "B"
-          },
-          {
-            question_number: 2,
-            question_topic: "Monitoring",
-            question: "Which feature in Cloud Monitoring allows you to detect and alert on abnormal system behavior?",
-            answers: [
-              "Uptime checks",
-              "Dashboards",
-              "Alerting policies",
-              "Anomaly detection"
-            ],
-            correct_answer: "D"
-          }
-        ],
-        'terraform-questions.js': [
-          {
-            question_number: 1,
-            question_topic: "State Management",
-            question: "Where should you store Terraform state files in a team environment?",
-            answers: [
-              "Local machine",
-              "Git repository",
-              "Remote backend like GCS",
-              "Environment variables"
-            ],
-            correct_answer: "C"
-          },
-          {
-            question_number: 2,
-            question_topic: "Provisioning",
-            question: "Which Terraform command previews the changes that will be made to your infrastructure?",
-            answers: [
-              "terraform init",
-              "terraform plan",
-              "terraform apply",
-              "terraform validate"
-            ],
-            correct_answer: "B"
-          }
-        ]
-      };
-      
-      return samples[scriptName.split('/').pop()];
-    }
+
 
     // Global function to render questions on the page using the provided data array.
     function renderQuestions(data) {
@@ -437,7 +326,7 @@
         item.answers.forEach((answer, index) => {
           const letter = String.fromCharCode(65 + index);
           const li = document.createElement('li');
-          li.textContent = `${letter}. ${answer}`;
+          li.textContent = `${answer}`;
           
           if (correctLetters.includes(letter)) {
             li.classList.add('correct-answer');
