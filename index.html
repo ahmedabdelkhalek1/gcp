@@ -73,7 +73,23 @@
       border-radius: 5px;
       float: right;
     }
-    
+    .back-btn {
+      display: block;
+      margin: 1rem auto;
+      background: #fff;
+      color: #3498db;
+      border: 2px solid #3498db;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+      text-align: center;
+      width: fit-content;
+    }
+    .back-btn:hover {
+      background: #3498db;
+      color: #fff;
+    }
     /* Improved Welcome Screen Styles */
     #welcome-screen {
       display: flex;
@@ -86,7 +102,6 @@
       text-align: center;
       padding: 2rem;
     }
-    
     .welcome-container {
       background: rgba(255, 255, 255, 0.9);
       border-radius: 12px;
@@ -94,32 +109,27 @@
       max-width: 800px;
       box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     }
-    
     .welcome-container h1 {
       font-size: 2.5rem;
       margin-bottom: 1rem;
       color: #4285f4;
       font-weight: 700;
     }
-    
     .welcome-container p {
       font-size: 1.2rem;
       margin-bottom: 2rem;
       color: #5f6368;
     }
-    
     .gcp-logo {
       width: 120px;
       margin-bottom: 1.5rem;
     }
-    
     .exam-cards {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 20px;
       width: 100%;
     }
-    
     .exam-card {
       background: white;
       border-radius: 8px;
@@ -129,12 +139,10 @@
       cursor: pointer;
       border: 1px solid #e0e0e0;
     }
-    
     .exam-card:hover {
       transform: translateY(-5px);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
     }
-    
     .exam-card-header {
       padding: 15px;
       background-color: #4285f4;
@@ -142,25 +150,21 @@
       font-weight: 600;
       font-size: 1.1rem;
     }
-    
     .associate-header { background-color: #4285f4; }
     .professional-header { background-color: #34a853; }
     .devops-header { background-color: #fbbc05; }
     .terraform-header { background-color: #ea4335; }
-    
     .exam-card-body {
       padding: 15px;
       color: #5f6368;
       font-size: 0.9rem;
     }
-    
     .exam-card-footer {
       padding: 12px 15px;
       background-color: #f8f9fa;
       display: flex;
       justify-content: center;
     }
-    
     .start-btn {
       background: none;
       color: #4285f4;
@@ -171,28 +175,23 @@
       cursor: pointer;
       transition: all 0.2s;
     }
-    
     .start-btn:hover {
       background: #4285f4;
       color: white;
     }
-    
     /* Questions Container */
     #questions-container {
       display: none;
       padding: 20px;
     }
-    
     /* Media Queries for Responsiveness */
     @media (max-width: 768px) {
       .exam-cards {
         grid-template-columns: 1fr;
       }
-      
       .welcome-container {
         padding: 1.5rem;
       }
-      
       .welcome-container h1 {
         font-size: 2rem;
       }
@@ -203,9 +202,9 @@
   <!-- Welcome Screen -->
   <div id="welcome-screen">
     <div class="welcome-container">
-      <img src="https://cloud.google.com/images/cloud-logo.svg" class="gcp-logo" alt="Google Cloud Logo" style="width: 300px; height: auto;">      <h1>GCP Certification Prep</h1>
+      <img src="https://cloud.google.com/images/cloud-logo.svg" class="gcp-logo" alt="Google Cloud Logo" style="width: 300px; height: auto;">      
+      <h1>GCP Certification Prep</h1>
       <p>Select an exam type below to start practicing with real-world questions</p>
-      
       <div class="exam-cards">
         <div class="exam-card">
           <div class="exam-card-header associate-header">Associate Cloud Engineer</div>
@@ -216,7 +215,6 @@
             <button class="start-btn" onclick="loadExamData('associate')">Start Practice</button>
           </div>
         </div>
-        
         <div class="exam-card">
           <div class="exam-card-header professional-header">Professional Cloud Architect</div>
           <div class="exam-card-body">
@@ -226,7 +224,6 @@
             <button class="start-btn" onclick="loadExamData('professional')">Start Practice</button>
           </div>
         </div>
-        
         <div class="exam-card">
           <div class="exam-card-header devops-header">Professional DevOps Engineer</div>
           <div class="exam-card-body">
@@ -236,7 +233,6 @@
             <button class="start-btn" onclick="loadExamData('devops')">Start Practice</button>
           </div>
         </div>
-        
         <div class="exam-card">
           <div class="exam-card-header terraform-header">Terraform Associate</div>
           <div class="exam-card-body">
@@ -251,90 +247,75 @@
   </div>
 
   <!-- Questions Container -->
-  <div id="questions-container"></div>
+  <div id="questions-container">
+    <button class="back-btn" onclick="goToWelcomeScreen()">Back to Welcome Screen</button>
+  </div>
 
   <script>
-    // Function to dynamically load a script file
+    // Function to dynamically load a script file with error handling
     function loadScript(src, callback) {
-      const script = document.createElement('script');
-      script.src = src;
-      script.onload = callback;
-      script.onerror = function() {
-        console.error('Error loading script: ' + src);
-        
-        // If script loading fails, show sample data instead
-        const sampleData = getSampleData(src);
-        if (sampleData) {
-          callback();
-          window[getVarNameFromScript(src)] = sampleData;
-        }
-      };
-      document.head.appendChild(script);
+      return new Promise((resolve, reject) => {
+        const script = document.createElement('script');
+        script.src = src;
+        script.onload = () => {
+          resolve();
+          if (callback) callback();
+        };
+        script.onerror = () => {
+          reject(new Error(`Failed to load ${src}`));
+          alert(`Error loading exam data. Please check the console for details.`);
+          console.error(`Error loading script: ${src}`);
+        };
+        document.head.appendChild(script);
+      });
     }
-    
-    // Helper function to get variable name from script name
-    function getVarNameFromScript(scriptName) {
-      if (scriptName.includes('associate')) return 'associateQuestionsData';
-      if (scriptName.includes('professional')) return 'professionalQuestionsData';
-      if (scriptName.includes('devops')) return 'devopsQuestionsData';
-      if (scriptName.includes('terraform')) return 'terraformQuestionsData';
-      return '';
-    }
-    
-
 
     // Global function to render questions on the page using the provided data array.
     function renderQuestions(data) {
       const container = document.getElementById('questions-container');
       container.innerHTML = ''; // Clear any existing content
-      
+
+      // Add back button
+      const backButton = document.createElement('button');
+      backButton.className = 'back-btn';
+      backButton.textContent = 'Back to Welcome Screen';
+      backButton.onclick = goToWelcomeScreen;
+      container.appendChild(backButton);
+
       data.forEach((item) => {
-        // Create discussion container
         const discussionContainer = document.createElement('div');
         discussionContainer.className = 'discussion-container';
         
-        // Create header
+        // Header
         const header = document.createElement('div');
         header.className = 'discussion-header';
-        
         const headerText = document.createElement('div');
         headerText.className = 'discussion-header-text';
         headerText.innerHTML = `Question #${item.question_number} | <span class="topic-label">Topic ${item.question_topic || 'General'}</span>`;
-        
         header.appendChild(headerText);
         
-        // Create body
+        // Body
         const body = document.createElement('div');
         body.className = 'discussion-body';
-        
-        // Create question text
         const question = document.createElement('p');
         question.className = 'question-body';
         question.textContent = item.question;
         
-        // Create answers list
+        // Answers
         const answersList = document.createElement('ul');
         answersList.className = 'answer-options';
+        const correctLetters = item.correct_answer.replace(/[^A-Za-z]/g, '').toUpperCase().split('');
         
-        // Process correct answers
-        const correctLetters = item.correct_answer
-          .replace(/[^A-Za-z]/g, '')
-          .toUpperCase()
-          .split('');
-          
         item.answers.forEach((answer, index) => {
           const letter = String.fromCharCode(65 + index);
           const li = document.createElement('li');
-          li.textContent = `${answer}`;
-          
+          li.textContent = answer;
           if (correctLetters.includes(letter)) {
             li.classList.add('correct-answer');
           }
-          
           answersList.appendChild(li);
         });
         
-        // Assemble the components
         body.appendChild(question);
         body.appendChild(answersList);
         discussionContainer.appendChild(header);
@@ -344,37 +325,50 @@
     }
 
     // Function that loads exam data based on exam type.
-    function loadExamData(type) {
-      // Hide the welcome screen
-      document.getElementById('welcome-screen').style.display = 'none';
-      // Show the questions container
-      document.getElementById('questions-container').style.display = 'block';
-
-      // Determine which script file to load
-      let scriptFile = '';
-      if (type === 'associate') {
-        scriptFile = 'associate-questions.js'; // Should define global variable "associateQuestionsData"
-      } else if (type === 'professional') {
-        scriptFile = 'professional-questions.js'; // Should define global variable "professionalQuestionsData"
-      } else if (type === 'devops') {
-        scriptFile = 'devops-questions.js'; // Should define global variable "devopsQuestionsData"
-      } else if (type === 'terraform') {
-        scriptFile = 'terraform-questions.js'; // Should define global variable "terraformQuestionsData"
+    async function loadExamData(type) {
+      try {
+        document.getElementById('welcome-screen').style.display = 'none';
+        document.getElementById('questions-container').style.display = 'block';
+        
+        let data;
+        switch(type) {
+          case 'associate':
+            await loadScript('associate-questions.js');
+            data = associateQuestionsData;
+            break;
+          case 'professional':
+            await loadScript('professional-questions.js');
+            data = professionalQuestionsData;
+            break;
+          case 'devops':
+            await loadScript('devops-questions.js');
+            data = devopsQuestionsData;
+            break;
+          case 'terraform':
+            await loadScript('terraform-questions.js');
+            data = terraformQuestionsData;
+            break;
+          default:
+            throw new Error('Invalid exam type');
+        }
+        
+        if (!data) {
+          throw new Error('Exam data not found');
+        }
+        renderQuestions(data);
+        
+      } catch (error) {
+        console.error(error);
+        alert(`Failed to load ${type} exam: ${error.message}`);
+        document.getElementById('questions-container').style.display = 'none';
+        document.getElementById('welcome-screen').style.display = 'flex';
       }
+    }
 
-      // Dynamically load the external JS file
-      loadScript(scriptFile, function() {
-        // Once loaded, render questions based on the exam type
-        if (type === 'associate') {
-          renderQuestions(associateQuestionsData);
-        } else if (type === 'professional') {
-          renderQuestions(professionalQuestionsData);
-        } else if (type === 'devops') {
-          renderQuestions(devopsQuestionsData);
-        } else if (type === 'terraform') {
-          renderQuestions(terraformQuestionsData);
-        } 
-      });
+    // Function to return to welcome screen
+    function goToWelcomeScreen() {
+      document.getElementById('questions-container').style.display = 'none';
+      document.getElementById('welcome-screen').style.display = 'flex';
     }
   </script>
 </body>
