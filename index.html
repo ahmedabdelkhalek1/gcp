@@ -199,7 +199,7 @@
     /* Floating Search Bar Styles */
     #search-bar {
       position: fixed;
-      top: 20px;
+      bottom: 20px;
       right: 20px;
       background: white;
       border: 1px solid #ccc;
@@ -226,7 +226,7 @@
       cursor: pointer;
       border-radius: 3px;
     }
-    /* Remove disabled state from these buttons so they can be clicked */
+    /* Remove disabled state style so the buttons always appear clickable */
     .search-btn:disabled {
       background: #007bff;
       opacity: 0.6;
@@ -255,7 +255,7 @@
   <!-- Welcome Screen -->
   <div id="welcome-screen">
     <div class="welcome-container">
-      <img src="https://cloud.google.com/images/cloud-logo.svg" class="gcp-logo" alt="Google Cloud Logo" style="width: 300px; height: auto;">      
+      <img src="https://cloud.google.com/images/cloud-logo.svg" class="gcp-logo" alt="Google Cloud Logo" style="width: 300px; height: auto;">
       <h1>GCP Certification Prep</h1>
       <p>Select an exam type below to start practicing with real-world questions</p>
       <div class="exam-cards">
@@ -481,9 +481,7 @@
           highlightCurrentMatch();
           searchResults[searchIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
-        // Enable the navigation buttons if more than one match; otherwise, leave them enabled if desired.
-        document.getElementById('search-up-btn').disabled = (matchCount <= 1);
-        document.getElementById('search-down-btn').disabled = (matchCount <= 1);
+        // Enable/disable navigation buttons if desired (here, we always visually allow clicks)
         matchDisplay.textContent = `${matchCount} match${matchCount === 1 ? '' : 'es'}${matchCount > 0 ? ' (1 of ' + matchCount + ')' : ''}`;
       } else {
         // Navigation among existing results
@@ -523,9 +521,6 @@
         searchText(-1);
       }
     });
-
-    // Initially, we want the navigation buttons to be enabled if there are results,
-    // so we won't disable them by default. (They'll be updated on search.)
   </script>
 </body>
 </html>
