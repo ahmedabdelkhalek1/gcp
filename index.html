@@ -196,13 +196,66 @@
         font-size: 2rem;
       }
     }
+    /* Floating Search Bar Styles */
+    #search-bar {
+      position: fixed;
+      bottom: 40px; /* Raised from 20px to 40px */
+      right: 20px;
+      background: white;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px;
+    }
+    #search-input {
+      padding: 8px;
+      border: none;
+      outline: none;
+      font-size: 14px;
+      width: 200px;
+    }
+    .search-btn {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+    /* Remove disabled state style so the buttons always appear clickable */
+    .search-btn:disabled {
+      background: #007bff;
+      opacity: 0.6;
+      cursor: pointer;
+    }
+    /* Display area for match count and current match info */
+    #match-display {
+      font-size: 12px;
+      color: #333;
+    }
+    /* Highlight style for search results */
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+      padding: 1px 3px;
+      border-radius: 3px;
+    }
+    /* Current match styling for navigation */
+    .current-match {
+      outline: 2px solid blue;
+      background-color: lightyellow;
+    }
   </style>
 </head>
 <body>
   <!-- Welcome Screen -->
   <div id="welcome-screen">
     <div class="welcome-container">
-      <img src="https://cloud.google.com/images/cloud-logo.svg" class="gcp-logo" alt="Google Cloud Logo" style="width: 300px; height: auto;">      
+      <img src="https://cloud.google.com/images/cloud-logo.svg" class="gcp-logo" alt="Google Cloud Logo" style="width: 300px; height: auto;">
       <h1>GCP Certification Prep</h1>
       <p>Select an exam type below to start practicing with real-world questions</p>
       <div class="exam-cards">
@@ -242,10 +295,25 @@
             <button class="start-btn" onclick="loadExamData('terraform')">Start Practice</button>
           </div>
         </div>
+        <div class="exam-card">
+          <div class="exam-card-header EX-200-header">EX-200 RHCSA</div>
+          <div class="exam-card-body">
+            Test your knowledge of RHCSA EX-200 Exam.
+          </div>
+          <div class="exam-card-footer">
+            <button class="start-btn" onclick="loadHtmlPage('EX200_questions.html')">Start Practice</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-
+  <!-- Floating Search Bar
+  <div id="search-bar">
+    <input type="text" id="search-input" placeholder="Search..." />
+    <button class="search-btn" id="search-up-btn" onclick="searchText(-1)">▲</button>
+    <button class="search-btn" id="search-down-btn" onclick="searchText(1)">▼</button>
+    <span id="match-display"></span>
+  </div> -->
   <!-- Questions Container -->
   <div id="questions-container">
     <button class="back-btn" onclick="goToWelcomeScreen()">Back to Welcome Screen</button>
@@ -263,7 +331,6 @@
         };
         script.onerror = () => {
           reject(new Error(`Failed to load ${src}`));
-          alert(`Error loading exam data. Please check the console for details.`);
           console.error(`Error loading script: ${src}`);
         };
         document.head.appendChild(script);
@@ -359,7 +426,6 @@
         
       } catch (error) {
         console.error(error);
-        alert(`Failed to load ${type} exam: ${error.message}`);
         document.getElementById('questions-container').style.display = 'none';
         document.getElementById('welcome-screen').style.display = 'flex';
       }
@@ -370,6 +436,119 @@
       document.getElementById('questions-container').style.display = 'none';
       document.getElementById('welcome-screen').style.display = 'flex';
     }
+    function loadHtmlPage(htmlFile) {
+      document.getElementById('welcome-screen').style.display = 'none';
+      const questionsContainer = document.getElementById('questions-container');
+      questionsContainer.style.display = 'block';
+      
+      // Create a back button first
+      questionsContainer.innerHTML = '<button class="back-btn" onclick="goToWelcomeScreen()">Back to Welcome Screen</button>';
+      
+      // Create an iframe to load the HTML file
+      const iframe = document.createElement('iframe');
+      iframe.src = htmlFile;
+      iframe.style.width = '100%';
+      iframe.style.height = 'calc(110vh - 100px)'; // Adjust height to leave room for back button
+      iframe.style.width = '100%';
+      iframe.style.border = 'none';
+      iframe.style.flex = '1';
+      
+      // Add iframe to the container
+      questionsContainer.appendChild(iframe);
+    }
+
+    // --------------------------
+    // Search Functionality
+    // --------------------------
+    let searchResults = [];
+    let searchIndex = -1;
+
+    // Highlight all occurrences of searchTerm within a node
+    function highlightTextInNode(node, searchTerm) {
+      const innerHTML = node.innerHTML;
+      const regex = new RegExp(`(${searchTerm})`, 'gi');
+      const newHTML = innerHTML.replace(regex, `<span class="highlight">$1</span>`);
+      node.innerHTML = newHTML;
+    }
+
+    // Main search function:
+    // direction === 0 means a fresh search (triggered when the input changes)
+    // direction === 1 or -1 means navigation among existing matches.
+    function searchText(direction) {
+      const query = document.getElementById('search-input').value.trim().toLowerCase();
+      const container = document.getElementById('questions-container');
+      const matchDisplay = document.getElementById('match-display');
+
+      if (!query) {
+        matchDisplay.textContent = '';
+        return;
+      }
+      
+      // Fresh search or no previous results
+      if (direction === 0 || searchResults.length === 0) {
+        // Clear previous highlights
+        const textNodes = Array.from(container.querySelectorAll('.question-body, .answer-options li'));
+        textNodes.forEach(node => {
+          node.innerHTML = node.textContent;
+          node.classList.remove('highlight', 'current-match');
+        });
+        
+        // Reset results
+        searchResults = [];
+        searchIndex = -1;
+
+        textNodes.forEach(node => {
+          if (node.textContent.toLowerCase().includes(query)) {
+            searchResults.push(node);
+            highlightTextInNode(node, query);
+          }
+        });
+
+        const matchCount = searchResults.length;
+        if (matchCount > 0) {
+          searchIndex = 0;
+          highlightCurrentMatch();
+          searchResults[searchIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        matchDisplay.textContent = `${matchCount} match${matchCount === 1 ? '' : 'es'}${matchCount > 0 ? ' (1 of ' + matchCount + ')' : ''}`;
+      } else {
+        // Navigation among existing results
+        if (direction === 1 || direction === -1) {
+          searchIndex += direction;
+          if (searchIndex >= searchResults.length) searchIndex = 0;
+          if (searchIndex < 0) searchIndex = searchResults.length - 1;
+          highlightCurrentMatch();
+          searchResults[searchIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+          matchDisplay.textContent = `${searchResults.length} match${searchResults.length === 1 ? '' : 'es'} ( ${searchIndex + 1} of ${searchResults.length} )`;
+        }
+      }
+    }
+
+    // Apply a "current-match" class to the active match.
+    function highlightCurrentMatch() {
+      searchResults.forEach((node, index) => {
+        node.classList.remove('current-match');
+        if (index === searchIndex) {
+          node.classList.add('current-match');
+        }
+      });
+    }
+
+    // Automatically trigger a new search when the input changes.
+    document.getElementById('search-input').addEventListener('input', function() {
+      searchText(0);
+    });
+
+    // Trigger navigation when up/down arrow keys are pressed in the search input.
+    document.getElementById('search-input').addEventListener('keydown', function(e) {
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        searchText(1);
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        searchText(-1);
+      }
+    });
   </script>
 </body>
 </html>

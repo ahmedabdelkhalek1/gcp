@@ -1,0 +1,2235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Questions</title>
+<style>
+/* ExamTopics styling */
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+}
+.discussion-container {
+    max-width: 800px;
+    margin: 15px auto;
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+}
+.discussion-header {
+    padding: 12px 15px;
+    background-color: #007bff;
+    color: white;
+    border-bottom: 1px solid #dee2e6;
+}
+.discussion-header-text {
+    font-size: 16px;
+    font-weight: 600;
+}
+.discussion-body {
+    padding: 15px;
+}
+.question-body {
+    margin: 0;
+    font-size: 14px;
+    color: #34495e;
+    line-height: 1.5;
+    white-space: pre-line;
+
+}
+.answer-options {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0 0;
+}
+.answer-options li {
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    background: #ffffff;
+    position: relative;
+    transition: all 0.2s;
+    white-space: pre-line;
+
+}
+.answer-options li:hover {
+    background: #ddd;
+}
+.correct-answer {
+    background-color: #d4edda !important;
+    border-color: #28a745 !important;
+}
+.correct-answer::after {
+    content: "✓";
+    color: #28a745;
+    font-weight: bold;
+    position: absolute;
+    right: 15px;
+}
+.topic-label {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    float: right;
+}
+.suggested-answer {
+    background-color: #fff3cd !important;
+    border-color: #ffc107 !important;
+    white-space: pre-line;
+
+}
+.suggested-answer::after {
+    content: "★";
+    color: #ffc107;
+    font-weight: bold;
+    position: absolute;
+    right: 15px;
+}
+</style>
+</head>
+<body>
+
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #1 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure your Host Name, IP Address, Gateway and DNS.Host name: station.domain40.example.com/etc/sysconfig/networkhostname=abc.comhostname abc.comIP Address:172.24.40.40/24 -Gateway172.24.40.1 -DNS:172.24.40.1 -</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# cd /etc/syscofig/network-scripts/
+# ls
+# vim ifcfg-eth0 (Configure IP Address, Gateway and DNS) IPADDR=172.24.40.40
+GATEWAY=172.24.40.1 -
+DNS1=172.24.40.1 -
+# vim /etc/sysconfig/network
+(Configure Host Name)
+HOSTNAME= station.domain40.example.com
+OR -
+Graphical Interfaces:
+System->Preference->Network Connections (Configure IP Address, Gateway and DNS) Vim /etc/sysconfig/network
+(Configure Host Name)</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #2 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Add 3 users: harry, natasha, tom.The requirements: The Additional group of the two users: harry, Natasha is the admin group. The user: tom's login shell should be non-interactive.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# useradd -G admin harry
+# useradd -G admin natasha
+# useradd -s /sbin/nologin tom
+# id harry;id Natasha (Show additional group)
+# cat /etc/passwd
+(Show the login shell)
+OR -
+# system-config-users</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #3 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create a catalog under /home named admins. Its respective group is requested to be the admin group. The group users could read and write, while other users are not allowed to access it. The files created by users from the same group should also be the admin group.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# cd /home/
+# mkdir admins /
+# chown .admin admins/
+# chmod 770 admins/
+# chmod g+s admins/</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #4 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure a task: plan to run echo hello command at 14:23 every day.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# which echo
+# crontab -e
+23 14 * * * /bin/echo hello
+# crontab -l (Verify)</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #5 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Find the files owned by harry, and copy it to catalog: /opt/dir</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# cd /opt/
+# mkdir dir
+# find / -user harry -exec cp -rfp {} /opt/dir/ \;</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #6 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Find the rows that contain abcde from file /etc/testfile, and write it to the file/tmp/testfile, and the sequence is requested as the same as /etc/testfile.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# cat /etc/testfile | while read line;
+do
+echo $line | grep abcde | tee -a /tmp/testfile
+done
+OR -
+grep `abcde' /etc/testfile > /tmp/testfile</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #7 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create a 2G swap partition which take effect automatically at boot-start, and it should not affect the original swap partition.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# fdisk /dev/sda
+p
+(check Partition table)
+n
+(create new partition: press e to create extended partition, press p to create the main partition, and the extended partition is further divided into logical partitions)
+Enter -
++2G
+t
+l
+W -
+partx -a /dev/sda
+partprobe
+mkswap /dev/sda8
+Copy UUID -
+swapon -a
+vim /etc/fstab
+UUID=XXXXX swap swap defaults 0 0
+(swapon -s)</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #8 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create a user named alex, and the user id should be 1234, and the password should be alex111.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# useradd -u 1234 alex
+# passwd alex
+alex111
+alex111
+OR -
+echo alex111|passwd -stdin alex</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #9 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Install a FTP server, and request to anonymous download from /var/ftp/pub catalog. (it needs you to configure yum direct to the already existing file server.)</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# cd /etc/yum.repos.d
+# vim local.repo
+[local]
+name=local.repo
+baseurl=file:///mnt
+enabled=1
+gpgcheck=0
+# yum makecache
+# yum install -y vsftpd
+# service vsftpd restart
+# chkconfig vsftpd on
+# chkconfig --list vsftpd
+# vim /etc/vsftpd/vsftpd.conf
+anonymous_enable=YES</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #10 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure a HTTP server, which can be accessed throughhttp://station.domain40.example.com.Please download the released page from http://ip/dir/example.html.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# yum install -y httpd
+# chkconfig httpd on
+# cd /var/www/html
+# wget http://ip/dir/example.html
+# cp example.com index.html
+# vim /etc/httpd/conf/httpd.conf
+NameVirtualHost 192.168.0.254:80
+<VirtualHost 192.168.0.254:80>
+DocumentRoot /var/www/html/
+ServerName station.domain40.example.com
+</VirtualHost></li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #11 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure the verification mode of your host account and the password as LDAP. And it can login successfully through ldapuser40. The password is set as"password". And the certificate can be downloaded from http://ip/dir/ldap.crt. After the user logs on the user has no host directory unless you configure the autofs in the following questions.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+system-config-authentication
+LDAP Server: ldap//instructor.example.com (In domain form, not write IP)
+OR -
+# yum groupinstall directory-client (1.krb5-workstation 2.pam-krb5 3.sssd)
+# system-config-authentication
+1.User Account Database: LDAP
+2.LDAP Search Base DN: dc=example,dc=com
+3.LDAP Server: ldap://instructor.example.com (In domain form, not write IP) 4.Download CA Certificate
+5.Authentication Method: LDAP password
+6.Apply
+getent passwd ldapuser40</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #12 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure autofs to make sure after login successfully, it has the home directory autofs, which is shared as /rhome/ldapuser40 at the ip: 172.24.40.10. and it also requires that, other ldap users can use the home directory normally.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# chkconfig autofs on
+# cd /etc/
+# vim /etc/auto.master
+/rhome /etc/auto.ldap
+# cp auto.misc auto.ldap
+# vim auto.ladp
+ldapuser40 -rw,soft,intr 172.24.40.10:/rhome/ldapuser40
+* -rw,soft,intr 172.16.40.10:/rhome/&
+# service autofs stop
+# server autofs start
+# showmount -e 172.24.40.10
+# su - ladpuser40</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #13 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure the system synchronous as 172.24.40.10.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+Graphical Interfaces:
+System-->Administration-->Date & Time
+OR -
+# system-config-date</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #14 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Change the logical volume capacity named vo from 190M to 300M. and the size of the floating range should set between 280 and 320. (This logical volume has been mounted in advance.)</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# vgdisplay
+(Check the capacity of vg, if the capacity is not enough, need to create pv , vgextend , lvextend)
+# lvdisplay (Check lv)
+# lvextend -L +110M /dev/vg2/lv2
+# resize2fs /dev/vg2/lv2
+mount -a
+(Verify)
+-------------------------------------------------------------------------------
+(Decrease lvm)
+# umount /media
+# fsck -f /dev/vg2/lv2
+# resize2fs -f /dev/vg2/lv2 100M
+# lvreduce -L 100M /dev/vg2/lv2
+# mount -a
+# lvdisplay (Verify)
+OR -
+# e2fsck -f /dev/vg1/lvm02
+# resize2fs -f /dev/vg1/lvm02
+# mount /dev/vg1/lvm01 /mnt
+# lvreduce -L 1G -n /dev/vg1/lvm02
+# lvdisplay (Verify)</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #15 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create a volume group, and set 16M as a extends. And divided a volume group containing 50 extends on volume group lv, make it as ext4 file system, and mounted automatically under /mnt/data.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# pvcreate /dev/sda7 /dev/sda8
+# vgcreate -s 16M vg1 /dev/sda7 /dev/sda8
+# lvcreate -l 50 -n lvm02
+# mkfs.ext4 /dev/vg1/lvm02
+# blkid /dev/vg1/lv1
+# vim /etc/fstab
+# mkdir -p /mnt/data
+UUID=xxxxxxxx /mnt/data ext4 defaults 0 0
+# vim /etc/fstab
+# mount -a
+# mount
+(Verify)</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #16 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Upgrading the kernel as 2.6.36.7.1, and configure the system to Start the default kernel, keep the old kernel available.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# cat /etc/grub.conf
+# cd /boot
+# lftp it
+# get dr/dom/kernel-xxxx.rpm
+# rpm -ivh kernel-xxxx.rpm
+# vim /etc/grub.conf
+default=0</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #17 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create a 512M partition, make it as ext4 file system, mounted automatically under /mnt/data and which take effect automatically at boot-start.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# fdisk /dev/vda
+n
++512M
+w
+# partprobe /dev/vda
+# mkfs -t ext4 /dev/vda5
+# mkdir -p /data
+# vim /etc/fstab
+/dev/vda5 /data ext4 defaults 0 0
+# mount -a</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #18 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create a volume group, and set 8M as a extends. Divided a volume group containing 50 extends on volume group lv (lvshare), make it as ext4 file system, and mounted automatically under /mnt/data. And the size of the floating range should set between 380M and 400M.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# fdisk
+# partprobe
+# pvcreate /dev/vda6
+# vgcreate -s 8M vg1 /dev/vda6 -s
+# lvcreate -n lvshare -l 50 vg1 -l
+# mkfs.ext4 /dev/vg1/lvshare
+# mkdir -p /mnt/data
+# vim /etc/fstab
+/dev/vg1/lvshare /mnt/data ext4 defaults 0 0
+# mount -a
+# df -h</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #19 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Download ftp://192.168.0.254/pub/boot.iso to /root, and mounted automatically under /media/cdrom and which take effect automatically at boot-start.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# cd /root; wget ftp://192.168.0.254/pub/boot.iso
+# mkdir -p /media/cdrom
+# vim /etc/fstab
+/root/boot.iso /media/cdrom iso9660 defaults,loop 0 0
+# mount -a
+mount [-t vfstype] [-o options] device dir</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #20 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Add admin group and set gid=600 -</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# groupadd -g 600 admin</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #21 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Add user: user1, set uid=601 -Password: redhat -The user's login shell should be non-interactive.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# useradd -u 601 -s /sbin/nologin user1
+# passwd user1
+redhat</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #22 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Add users: user2, user3.The Additional group of the two users: user2, user3 is the admin group Password: redhat</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# useradd -G admin user2
+# useradd -G admin user3
+# passwd user2
+redhat
+# passwd user3
+redhat</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #23 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Copy /etc/fstab to /var/tmp name admin, the user1 could read, write and modify it, while user2 without any permission.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# cp /etc/fstab /var/tmp/
+# chgrp admin /var/tmp/fstab
+# setfacl -m u:user1:rwx /var/tmp/fstab
+# setfacl -m u:user2:--- /var/tmp/fstab
+# ls -l
+-rw-rw-r--+ 1 root admin 685 Nov 10 15:29 /var/tmp/fstab</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #24 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure a task: plan to run echo "file" command at 14:23 every day.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+(a) Created as administrator
+# crontab -u natasha -e
+23 14 * * * /bin/echo "file"
+(b)Created as natasha
+# su - natasha
+$ crontab -e
+23 14 * * * /bin/echo "file"</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #25 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure a default software repository for your system.One YUM has already provided to configure your system on http://server.domain11.example.com/pub/ x86_64/Server, and can be used normally.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+Yum-config-manager --add-repo=http://content.example.com/rhel7.0/x86-64/dvdג€ is to generate a file vim content.example.com_rhel7.0_x86_64_dvd.repo, Add a line gpgcheck=0
+Yumcleanall -
+Yumrepolist -
+Almost 4305 packages are right, Wrong Yum Configuration will lead to some following questions cannot be worked out.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #26 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Adjust the size of the Logical Volume.Adjust the size of the vo Logical Volume, its file system size should be 290M. Make sure that the content of this system is complete.Note: the partition size is rarely accurate to the same size as required, so in the range 270M to 320M is acceptable.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+Addition -
+df -hT
+lvextend -L +100M /dev/vg0/vo
+Lvscan -
+xfs_growfs /home/ //home is the mounted directory of the LVM, this step just need to do in the practice environment, and test EXT4 does not need this step. resize2fs /dev/vg0/vo// use this command to update in examination. df -hT
+OR -
+Subtraction -
+e2fsck -f/dev/vg0/vo
+umount /home
+resize2fs /dev/vg0/vo // the final required partition capacity is 100M lvreduce -l 100M /dev/vg0/vo mount /dev/vg0/vo/home df -hT</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #27 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create User Account.Create the following user, group and group membership:Adminuser group -User natasha, using adminuser as a sub groupUser Harry, also using adminuser as a sub groupUser sarah, can not access the SHELL which is interactive in the system, and is not a member of adminuser, natasha harry sarah password is redhat.ן¼ן¼</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+groupadd adminuser
+useradd natasha -G adminuser
+useradd haryy -G adminuser
+useradd sarah -s /sbin/nologin
+Passwd user name // to modify password or echo redhat | passwd --stdin user name id natasha // to view user group.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #28 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure /var/tmp/fstab Permission.Copy the file /etc/fstab to /var/tmp/fstab. Configure var/tmp/fstab permissions as the following:Owner of the file /var/tmp/fstab is Root, belongs to group rootFile /var/tmp/fstab cannot be executed by any userUser natasha can read and write /var/tmp/fstabUser harry cannot read and write /var/tmp/fstabAll other users (present and future) can read var/tmp/fstab.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+cp /etc/fstab /var/tmp/
+/var/tmp/fstab view the owner setfacl -m u:natasha:rw- /var/tmp/fstab setfacl -m u:haryy:--- /var/tmp/fstab
+Use getfacl /var/tmp/fstab to view permissions</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #29 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure a cron Task.User natasha must configure a cron job, local time 14:23 runs and executes: */bin/echo hiya every day.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+crontab ג€"e ג€"u natasha
+23 14/bin/echo hiya
+crontab -l -u natasha // view
+systemctlenable crond
+systemcdlrestart crond</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #30 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create a Shared Directory.Create a shared directory /home/admins, make it has the following characteristics:/home/admins belongs to group adminuserThis directory can be read and written by members of group adminuser Any files created in /home/ admin, group automatically set as adminuser.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+mkdir /home/admins
+chgrp -R adminuser /home/admins
+chmodg+w /home/admins
+chmodg+s /home/admins</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #31 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Install the Kernel Upgrade.Install suitable kernel update from:http://server.domain11.example.com/pub/updates.Following requirements must be met:Updated kernel used as the default kernel of system start-up.The original kernel is still valid and can be guided when system starts up.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+Using the browser open the URL in the question, download kernel file to root or home directory. uname ג€"r// check the current kernel version rpm ג€"ivh kernel-*.rpm vi /boot/grub.conf// check
+Some questions are: Install and upgrade the kernel as required. To ensure that grub2 is the default item for startup.
+Yum repo : http://content.example.com/rhel7.0/x86-64/errata
+OR -
+uname -r  // check kernel
+Yum-config-manager --add-repo=ג€http://content.example.com/rhel7.0/x86-64/ errataג€
+Yum clean all -
+Yum list kernel// install directly
+Yum -y install kernel// stuck with it, do not pipe! Please do not pipe!
+Default enable new kernel grub2-editenv list// check
+Modify grub2-set-default ג€kernel full nameג€
+Grub2-mkconfig ג€"o/boot/grub2/grub.cfg// Refresh</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #33 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure NTP.Configure NTP service, Synchronize the server time, NTP server: classroom.example.com</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+Configure the client:
+Yum -y install chrony -
+Vim /etc/chrony.conf -
+Add: server classroom.example.com iburst
+Start: systemctl enable chronyd -
+systemctl restart chronyd
+Validate: timedatectl status</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #34 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure autofs.Configure the autofs automatically mount to the home directory of LDAP, as required: server.domain11.example.com use NFS to share the home to your system. This file system contains a pre configured home directory of user ldapuserX.Home directory of ldapuserX is:server.domain11.example.com /home/guests/ldapuserHome directory of ldapuserX should automatically mount to the ldapuserX of the local /home/guests Home directory's write permissions must be available for users ldapuser1's password is password</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+yum install -y autofs
+mkdir /home/rehome
+/etc/auto.master
+/home/rehome/etc/auto.ldap
+Keep then exit -
+cp /etc/auto.misc /etc/auto.ldap
+/etc/auto.ldap
+ldapuserX -fstype=nfs,rw server.domain11.example.com:/home/guests/
+Keep then exit -
+systemctl start autofs
+systemctl enable autofs
+su - ldapuserX// test
+If the above solutions cannot create files or the command prompt is -bash-4.2$, it maybe exist multi-level directory, this needs to change the server.domain11.example.com:/home/guests/ to server.domain11.example.com:/home/guests/ldapuserX. What is multi-level directory? It means there is a directory of ldapuserX under the /home/guests/ldapuserX in the questions. This directory is the real directory.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #35 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure a user account.Create a user iar uid is 3400. Password is redhatן¼</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+useradd -u 3400 iar
+passwd iar</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #36 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Add a swap partition.Adding an extra 500M swap partition to your system, this swap partition should mount automatically when the system starts up. Don't remove and modify the existing swap partitions on your system.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+fdisk -cu /dev/vda// in the way of expanding the partition, don't make main partition partx ג€"a /dev/vda mkswap /dev/vdax swapon /dev/vdax swapon ג€"s vi /etc/fstab
+/dev/vdaxswapswapdefaults0 0
+mount -a</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #37 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Search files.Find out files owned by jack, and copy them to directory /root/findresults</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+mkdir/root/findfiles
+find / -user jack -exec cp -a {} /root/findfiles/ \; ls /root/findresults</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #38 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Search a String -Find out all the columns that contains the string seismic within /usr/share/dict/words, then copy all these columns to /root/lines.tx in original order, there is no blank line, all columns must be the accurate copy of the original columns.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+grep seismic /usr/share/dict/words    > /root/lines.txt</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #39 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create a backup -Create a backup file named /root/backup.tar.bz2, contains the content of /usr/local, tar must use bzip2 to compress.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+cd /usr/local
+tar ג€"jcvf /root/backup.tar.bz2
+mkdir /test
+tar ג€"jxvf /root/backup.tar.bz2 ג€"C /test// Decompression to check the content is the same as the /usr/loca after
+If the questions require to use gzip to compress. change ג€"j to ג€"z.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #40 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create a logical volume -Create a new logical volume as required:Name the logical volume as database, belongs to datastore of the volume group, size is 50 PE.Expansion size of each volume in volume group datastore is 16MB.Use ext3 to format this new logical volume, this logical volume should automatically mount to /mnt/database</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+fdisk -cu /dev/vda// Create a 1G partition, modified when needed partx ג€"a /dev/vda pvcreate /dev/vdax vgcreate datastore /dev/vdax ג€"s 16M lvcreateג€" l 50 ג€"n database datastore mkfs.ext3 /dev/datastore/database mkdir /mnt/database mount /dev/datastore/database /mnt/database/ df ג€"Th vi /etc/fstab
+/dev/datastore /database /mnt/database/ ext3 defaults 0 0 mount ג€"a
+Restart and check all the questions requirements.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #41 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure your Host Name, IP Address, Gateway and DNS.Host name: dtop5.dn.ws.com -IP Address: 172.28.10.5/4 -Gateway: 172.28.10.1 -DNS: 172.28.10.1 -</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+1. Configure Host Name
+vim /etc/sysconfig/network NETWORKING=yes HOSTNAME=dtop5.dn.ws.com GATEWAY=172.28.10.1
+2. Configure IP Address, Gateway and DNS
+Configure the network by Network Manager:
+Note: Please remember to choose two options:
+Connect automatically -
+Available to all users -
+Click "Apply", save and exit, and restart your network services:
+# Service network restart
+3. Validate these profiles:
+a) Check gateway: # vim / etc / sysconfig / network
+NETWORKING=yes -
+HOSTNAME=dtop5.dn.ws.com -
+GATEWAY=172.28.10.1 -
+b) Check Host Name: # vim /etc/hosts
+c) Check DNS: # vim /etc/resolv.conf
+# Generated by NetworkManager
+Search dn.ws.com -
+Nameserver 172.28.10.1 -
+d) Check Gateway: # vim /etc/sysconfig/network-scripts/ifcfg-eth0</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #42 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create a 2G swap partition which take effect automatically at boot-start, and it should not affect the original swap partition.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# fdisk /dev/sda
+p
+(check Partition table)
+n
+(create new partition: press e to create extended partition, press p to create the main partition, and the extended partition is further divided into logical partitions)
+Enter -
++2G t
+8 I
+82
+W -
+partx -a /dev/sda
+partprobe
+mkswap /dev/sda8
+Copy UUID -
+swapon -a
+vim /etc/fstab
+UUID=XXXXX swap swap defaults 0 0
+(swapon -s)</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #43 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Please open the ip_forward, and take effect permanently.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+vim /etc/sysctl.conf net.ipv4.ip_forward = 1
+sysctl ג€"w   (takes effect immediately)
+If no ג€sysctl.confג€ option, use these commands:
+sysctl ג€"a |grep net.ipv4
+sysctl ג€"P net.ipv4.ip_forward = 1
+sysctl -w</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #44 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Open kmcrl value of 5 , and can verify in /proc/ cmdline</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# vim /boot/grub/grub.conf
+kernel/vmlinuz-2.6.32-71.el6.x86_64 ro root=/dev/mapper/GLSvg-GLSrootrd_LVM_LV=GLSvg/GLSroot rd_LVM_LV=GLSvg/GLSswaprd_NO_LUKSrd_NO_MDrd_NO_DM
+LANG=en_US.UTF-8 SYSFONT=latarcyrheb-sun16 KEYBOARDTYPE=pc KEYTABLE=us crashkernel=auto rhgb quiet kmcrl=5
+Restart to take effect and verification:
+# cat /proc/cmdline
+ro root=/dev/mapper/GLSvg-GLSroot rd_LVM_LV=GLSvg/GLSroot rd_LVM_LV=GLSvg/GLSswap rd_NO_LUKS rd_NO_MD rd_NO_DM
+LANG=en_US.UTF-8 SYSFONT=latarcyrheb-sun16 KEYBOARDTYPE=pc KEYTABLE=us rhgb quiet kmcrl=5</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #45 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Upgrade the kernel, start the new kernel by default. kernel download from this address: ftp://server1.domain10.example.com/pub/update/new.kernel</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+Download the new kernel file and then install it.
+[root@desktop8 Desktop]# ls
+kernel-2.6.32-71.7.1.el6.x86_64.rpm
+kernel-firmware-2.6.32-71.7.1.el6.noarch.rpm
+[root@desktop8 Desktop]# rpm -ivh kernel-*
+Preparing... ###########################################
+[100%]
+1:kernel-firmware
+########################################### [ 50%]
+2:kernel
+########################################### [100%]
+Verify the grub.conf file, whether use the new kernel as the default boot. [root@desktop8 Desktop]# cat /boot/grub/grub.conf default=0 title Red Hat Enterprise Linux Server (2.6.32-71.7.1.el6.x86_64) root (hd0,0) kernel /vmlinuz-2.6.32-71.7.1.el6.x86_64 ro root=/dev/mapper/vol0-root rd_LVM_LV=vol0/root rd_NO_LUKS rd_NO_MD rd_NO_DM LANG=en_US.UTF-8 SYSFONT=latarcyrheb-sun16 KEYBOARDTYPE=pc KEYTABLE=us crashkernel=auto rhgb quiet initrd /initramfs-2.6.32-71.7.1.el6.x86_64.img</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #46 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure iptables, there are two domains in the network, the address of local domain is 172.24.0.0/16 other domain is 172.25.0.0/16, now refuse domain172.25.0.0/16 to access the server.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+iptables -F
+service iptables save
+iptables -A INPUT -s 172.25.0.0/16 -j REJECT
+service iptables save
+service iptables restart</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #47 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -A YUM source has been provided in thehttp://instructor.example.com/pub/rhel6/dvdConfigure your system and can be used normally.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+/etc/yum.repos.d/base.repo
+[base]
+name=base
+baseurl=http://instructor.example.com/pub/rhel6/dvd
+gpgcheck=0
+yum list</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #48 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -There are two different networks, 192.168.0.0/24 and 192.168.1.0/24. Your System is in 192.168.0.0/24 Network. One RHEL6 Installed System is going to use as a Router. All required configuration is already done on Linux Server. Where 192.168.0.254 and 192.168.1.254 IP Address are assigned on that Server. How will make successfully ping to 192.168.1.0/24 Network's Host?</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+vi /etc/sysconfig/network GATEWAY=192.168.0.254
+OR -
+vi /etc/sysconf/network-scripts/ifcfg-eth0 DEVICE=eth0
+BOOTPROTO=static -
+ONBOOT=yes -
+IPADDR=192.168.0.?
+NETMASK=255.255.255.0 -
+GATEWAY=192.168.0.254 -
+service network restart
+Gateway defines the way to exit the packets. According to question System working as a router for two networks have IP Address 192.168.0.254 and
+192.168.1.254.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #49 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Make a swap partition having 100MB. Make Automatically Usable at System Boot Time.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+Use fdisk /dev/hda ->To create new partition.
+Type n-> For New partition -
+It will ask for Logical or Primary Partitions. Press l for logical.
+It will ask for the Starting Cylinder: Use the Default by pressing Enter Key.
+Type the Size: +100M ->You can Specify either Last cylinder of Size here.
+Press P to verify the partitions lists and remember the partitions name. Default System ID is 83 that means Linux Native.
+Type t to change the System ID of partition.
+Type Partition Number -
+Type 82 that means Linux Swap.
+Press w to write on partitions table.
+Either Reboot or use partprobe command.
+mkswap /dev/hda? ->To create Swap File system on partition.
+swapon /dev/hda? ->To enable the Swap space from partition.
+free -m ->Verify Either Swap is enabled or not.
+vi /etc/fstab/dev/hda? swap swap defaults 0 0
+Reboot the System and verify that swap is automatically enabled or not.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #50 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -There are two different networks 192.168.0.0/24 and 192.168.1.0/24. Where 192.168.0.254 and192.168.1.254 IP Address are assigned on Server. Verify your network settings by pinging 192.168.1.0/24 Network's Host.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+vi /etc/sysconfing/network NETWORKING=yes HOSTNAME=station?.example.com GATEWAY=192.168.0.254 service network restart
+2.vi /etc/sysconfig/network-scripts/ifcfg-eth0 DEVICE=eth0
+ONBOOT=yes -
+BOOTPROTO=static -
+IPADDR=X.X.X.X -
+NETMASK=X.X.X.X -
+GATEWAY=192.168.0.254 -
+ifdown eth0
+ifup eth0</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #51 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -One Logical Volume is created named as myvol under vo volume group and is mounted. The Initial Size of that Logical Volume is 400MB. Make successfully that the size of Logical Volume 200MB without losing any data. The size of logical volume 200MB to 210MB will be acceptable.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+First check the size of Logical Volume: lvdisplay /dev/vo/myvol
+Make sure that the filesystem is in a consistent state before reducing:
+# fsck -f /dev/vo/myvol
+Now reduce the filesystem by 200MB.
+# resize2fs /dev/vo/myvol 200M
+It is now possible to reduce the logical volume. #lvreduce /dev/vo/myvol -L 200M
+Verify the Size of Logical Volume: lvdisplay /dev/vo/myvol
+Verify that the size comes in online or not: df -h</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #52 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -One Logical Volume named /dev/test0/testvolume1 is created. The initial Size of that disk is 100MB now you required more 200MB. Increase the size of LogicalVolume, size should be increase on online.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+lvextend -L+200M /dev/test0/testvolume1 Use lvdisplay /dev/test0/testvolume1) ext2online -d /dev/test0/testvolume1 lvextend command is used the increase the size of Logical Volume. Other command lvresize command also here to resize. And to bring increased size on online we use the ext2online command.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #53 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -We are working on /data initially the size is 2GB. The /dev/test0/lvtestvolume is mount on /data. Now you required more space on /data but you already added all disks belong to physical volume. You saw that you have unallocated space around 5 GB on your harddisk. Increase the size of lvtestvolume by 5GB.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+Create a partition having size 5 GB and change the syste id '8e'. use partprobe command pvcreate /dev/hda9 Suppose your partition number is hda9. vgextend test0 /dev/hda9 vgextend command add the physical disk on volume group. lvextend -L+5120M /dev/test0/lvtestvolume verify using lvdisplay /dev/test0/lvtestvolume.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #54 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -One Domain RHCE is configured in your lab, your domain server is server1.example.com. nisuser2001, nisuser2002, nisuser2003 user are created on your server192.168.0.254:/rhome/stationx/nisuser2001. Make sure that when NIS user login in your system automatically mount the home directory. Home directory is separately shared on server /rhome/stationx/ where x is your Station number.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+use the authconfig --nisserver=<NIS SERVER> --nisdomain=<NIS DOMAIN> -- update
+Example: authconfig --niserver=192.168.0.254 --nisdomain=RHCE --update or system-config-authentication
+Click on Enable NIS -
+Type the NIS Domain: RHCE -
+Type Server 192.168.0.254 then click on next and ok
+You will get a ok message.
+Create a Directory /rhome/stationx where x is your station number. vi /etc/auto.master and write at the end of file /rhome/stationx /etc/auto.home --timeout=60 vi /etc/auto.home and write
+* -rw,soft,intr 192.168.0.254:/rhome/stationx/&
+Note: please specify your station number in the place of x.
+Service autofs restart -
+Login as the nisuser2001 or nisuser2002 on another terminal will be Success. According to question, RHCE domain is already configured. We have to make a client of RHCE domain and automatically mount the home directory on your system. To make a member of domain, we use the authconfig with option or system- config authentication command. There a are lots of authentication server i.e NIS, LDAB, SMB etc. NIS is a RPC related Services, no need to configure the DNS, we should specify the NIS server address.
+Here Automount feature is available. When user tried to login, home directory will automatically mount. The automount service used the /etc/auto.master file. On
+/etc/auto.master file we specified the mount point the configuration file for mount point.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #55 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Make on data that only the user owner and group owner member can fully access.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+chmod 770 /data
+Verify using : ls -ld /data Preview should be like:
+drwxrwx--- 2 root sysadmin 4096 Mar 16 18:08 /data
+To change the permission on directory we use the chmod command.
+According to the question that only the owner user (root) and group member (sysadmin) can fully access the directory so: chmod 770 /data</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #56 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Who ever creates the files/directories on a data group owner should automatically be in the same group owner as data.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+1. chmod g+s /data
+2. Verify using: ls -ld /data
+Permission should be like this: drwxrws--- 2 root sysadmin 4096 Mar 16 18:08 /data
+If SGID bit is set on directory then who every users creates the files on directory group owner automatically the owner of parent directory. To set the SGID bit: chmod g+s directory To Remove the SGID bit: chmod g-s directory</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #57 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Your System is going to use as a Router for two networks. One Network is 192.168.0.0/24 and Another Network is 192.168.1.0/24. Both network's IP address has assigned. How will you forward the packets from one network to another network?</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+echo "1" >/proc/sys/net/ipv4/ip_forward
+vi /etc/sysctl.conf
+net.ipv4.ip_forward = 1
+If you want to use the Linux System as a Router to make communication between different networks, you need enable the IP forwarding. To enable on running session just set value 1 to
+/proc/sys/net/ipv4/ip_forward. As well as automatically turn on the IP forwarding features on next boot set on /etc/sysctl.conf file.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #58 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create the user named eric and deny to interactive login.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+useradd eric
+passwd eric
+vi /etc/passwd
+eric:x:505:505::/home/eric:/sbin/nologin
+Which shell or program should start at login time is specified in /etc/passwd file? By default, Redhat Enterprise Linux assigns the /bin/bash shell to the users. To deny the interactive login, you should write /sbin/nologin or /bin/ false instead of login shell.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #59 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -/data Directory is shared from the server1.example.com server. Mount the shared directory that:</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+1. vi /etc/auto.master
+/mnt /etc /auto.misc --timeout=50
+vi /etc/auto.misc
+data -rw,soft,intr server1.example.com:/data
+service autofs restart
+chkconfig autofs on
+When you mount the other filesystem, you should unmount the mounted filesystem, Automount feature of linux helps to mount at access time and after certain seconds, when user unaccess the mounted directory, automatically unmount the filesystem.
+/etc/auto.master is the master configuration file for autofs service. When you start the service, it reads the mount point as defined in /etc/auto.master.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #60 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -One Logical Volume named lv1 is created under vg0. The Initial Size of that Logical Volume is 100MB. Now you required the size 500MB. Make successfully the size of that Logical Volume 500M without losing any data. As well as size should be increased online.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+The LVM system organizes hard disks into Logical Volume (LV) groups. Essentially, physical hard disk partitions (or possibly RAID arrays) are set up in a bunch of equal sized chunks known as Physical Extents (PE). As there are several other concepts associated with the LVM system, let's start with some basic definitions:
+Physical Volume (PV) is the standard partition that you add to the LVM mix. Normally, a physical volume is a standard primary or logical partition. It can also be a
+RAID array.
+Physical Extent (PE) is a chunk of disk space. Every PV is divided into a number of equal sized PEs. Every PE in a LV group is the same size. Different LV groups can have different sized PEs.
+Logical Extent (LE) is also a chunk of disk space. Every LE is mapped to a specific PE.
+Logical Volume (LV) is composed of a group of LEs. You can mount a file system such as /home and /var on an LV.
+Volume Group (VG) is composed of a group of LVs. It is the organizational group for LVM. Most of the commands that you'll use apply to a specific VG.
+Verify the size of Logical Volume: lvdisplay /dev/vg0/lv1
+Verify the Size on mounted directory: df -h or df -h mounted directory name
+Use: lvextend -L+400M /dev/vg0/lv1
+ext2online -d /dev/vg0/lv1 to bring extended size online.
+Again Verify using lvdisplay and df -h command.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #61 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create one partitions having size 100MB and mount it on data.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+1. Use fdisk /dev/hda to create new partition.
+2. Type n For New partitions.
+3. It will ask for Logical or Primary Partitions. Press l for logical.
+4. It will ask for the Starting Cylinder: Use the Default by pressing Enter
+Key.
+5. Type the Size: +100M you can specify either Last cylinder of size here.
+6. Press P to verify the partitions lists and remember the partitions name.
+7. Press w to write on partitions table.
+8. Either Reboot or use partprobe command.
+9. Use mkfs -t ext3 /dev/hda?
+OR -
+mke2fs -j /dev/hda? To create ext3 filesystem.
+vi /etc/fstab
+Write:
+/dev/hda? /data ext3 defaults 1 2
+Verify by mounting on current Sessions also: mount /dev/hda? /data</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #62 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -You are new System Administrator and from now you are going to handle the system and your main task is Network monitoring, Backup and Restore. But you don't know the root password. Change the root password to redhat and login in default Runlevel.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+When you Boot the System, it starts on default Runlevel specified in /etc/inittab:
+Id:?:initdefault:
+When System Successfully boot, it will ask for username and password. But you don't know the root's password. To change the root password you need to boot the system into single user mode. You can pass the kernel arguments from the boot loader.
+1. Restart the System.
+2. You will get the boot loader GRUB screen.
+3. Press a and type 1 or s for single mode ro root=LABEL=/ rhgb queit s
+4. System will boot on Single User mode.
+5. Use passwd command to change.
+6. Press ctrl+d</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #63 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -You are a System administrator. Using Log files very easy to monitor the system. Now there are 50 servers running as Mail, Web, Proxy, DNS services etc. You want to centralize the logs from all servers into on LOG Server. How will you configure the LOG Server to accept logs from remote host?</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+By default, system accept the logs only generated from local host. To accept the Log from other host configure: vi /etc/sysconfig/syslog SYSLOGD_OPTIONS="-m 0 -r"
+Where -
+-m 0 disables 'MARK' messages.
+-r enables logging from remote machines
+-x disables DNS lookups on messages received with -r
+service syslog restart</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #64 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Your System is configured in 192.168.0.0/24 Network and your nameserver is 192.168.0.254. Make successfully resolve to server1.example.com.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+nameserver is specified in question,
+1. Vi /etc/resolv.conf
+nameserver 192.168.0.254
+2. host server1.example.com</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #65 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -One Package named zsh is dump on ftp://server1.example.com under /pub/updates directory and your FTP server is 192.168.0.254. Install the package zsh.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+rpm -ivh ftp://server1/example.com/pub/updates/zsh-*
+or
+Login to ftp server : ftp ftp://server1.example.com using anonymous user.
+Change the directory: cd pub and cd updates
+Download the package: mget zsh-*
+Quit from the ftp prompt : bye -
+Install the package -
+rpm -ivh zsh-*
+Verify either package is installed or not : rpm -q zsh</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #66 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Some users home directory is shared from your system. Using showmount -e localhost command, the shared directory is not shown. Make access the shared users home directory.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+Verify the File whether Shared or not ? : cat /etc/exports
+Start the nfs service: service nfs start
+Start the portmap service: service portmap start
+Make automatically start the nfs service on next reboot: chkconfig nfs on
+Make automatically start the portmap service on next reboot: chkconfig portmap on
+Verify either sharing or not: showmount -e localhost
+Check that default firewall is running on system?
+If running flush the iptables using iptables -F and stop the iptables service.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #67 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Add a new logical partition having size 100MB and create the data which will be the mount point for the new partition.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+1. Use fdisk /dev/hda-> To create new partition.
+2. Type n ->For New partitions
+3. It will ask for Logical or Primary Partitions. Press l for logical.
+4. It will ask for the Starting Cylinder: Use the Default by pressing Enter
+Keys -
+5. Type the size: +100M you can specify either Last cylinder of size here.
+6. Press P to verify the partitions lists and remember the partitions name.
+7. Press w to write on partitions table.
+8. Either Reboot or use partprobe command.
+9. Use mkfs -t ext3 /dev/hda?
+OR -
+1. mke2fs -j /dev/hda? ->To create ext3 filesystem.
+2. vi /etc/fstab
+3. Write:
+/dev/hda? /data ext3 defaults 0 0
+4. Verify by mounting on current sessions also:
+mount /dev/hda? /data</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #68 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -You have a domain named www.rhce.com associated IP address is 192.100.0.2. Configure the Apache web server by implementing the SSL for encryption communication.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+vi /etc/httpd/conf.d/ssl.conf <VirtualHost 192.100.0.2> ServerName www.rhce.com DocumentRoot /var/www/rhce DirectoryIndex index.html index.htm
+ServerAdmin
+[email protected]
+SSLEngine on SSLCertificateFile /etc/httpd/conf/ssl.crt/server.crt SSLCertificateKeyFile /etc/httpd/conf/ssl.key/server.key </
+VirtualHost>
+cd /etc/httpd/conf
+3 make testcert
+Create the directory and index page on specified path. (Index page can download from ftp://server1.example.com at exam time) service httpd start|restart chkconfig httpd on
+Apache can provide encrypted communications using SSL (Secure Socket Layer). To make use of encrypted communication, a client must request to https protocol, which is uses port 443. For HTTPS protocol required the certificate file and key file.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #69 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -There is a server having 172.24.254.254 and 172.25.254.254. Your System lies on 172.24.0.0/16. Make successfully ping to 172.25.254.254 by Assigning following IP: 172.24.0.x where x is your station number.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+Use netconfig command -
+Enter the IP Address as given station number by your examiner: example: 172.24.0.1
+Enter Subnet Mask -
+Enter Default Gateway and primary name server
+press on ok
+ifdown eth0
+ifup eth0
+verify using ifconfig
+In the lab server is playing the role of router, IP forwarding is enabled. Just set the Correct IP and gateway, you can ping to 172.25.254.254.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #70 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Successfully resolve to server1.example.com where your DNS server is 172.24.254.254.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+vi /etc/resolv.conf
+nameserver 172.24.254.254
+host server1.example.com
+On every clients, DNS server is specified in /etc/resolv.conf. When you request by name it tries to resolv from DNS server.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #71 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Your System is going use as a router for 172.24.0.0/16 and 172.25.0.0/16. Enable the IP Forwarding.1. echo "1" >/proc/sys/net/ipv4/ip_forward2. vi /etc/sysctl.conf net.ipv4.ip_forward=1</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+/proc is the virtual filesystem, containing the information about the running kernel.
+To change the parameter of running kernel you should modify on /proc. From Next reboot the system, kernel will take the value from /etc/sysctl.conf.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #72 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Who ever creates the files/directories on archive group owner should be automatically should be the same group owner of archive.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+chmod g+s /archive
+Verify using: ls -ld /archive Permission should be like:
+drwxrws--- 2 root sysuser 4096 Mar 16 18:08 /archive
+If SGID bit is set on directory then who every users creates the files on directory group owner automatically the owner of parent directory.
+To set the SGID bit: chmod g+s directory
+To Remove the SGID bit: chmod g-s directory</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #73 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Make on /archive directory that only the user owner and group owner member can fully access.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+chmod 770 /archive
+Verify using : ls -ld /archive Preview should be like:
+drwxrwx--- 2 root sysuser 4096 Mar 16 18:08 /archive
+To change the permission on directory we use the chmod command. According to the question that only the owner user (root) and group member (sysuser) can fully access the directory so: chmod 770 /archive</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #74 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Notes:NFS  NFS instructor.example.com:/var/ftp/pub/rhel6/dvdן¼YUM  http://instructor.example.com/pub/rhel6/dvdן¼ldap  http //instructor.example.com/pub/EXAMPLE-CA-CERTן¼ן¼Install dialog package.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: yum install dialog</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #75 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -SELinux must run in force mode.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+/etc/sysconfig/selinux
+SELINUX=enforcing</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #76 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -The firewall must be open.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+/etc/init.d/iptables start
+iptables -F
+iptables -X
+iptables -Z
+/etc/init.d/iptables save
+chkconfig iptables on</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #77 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -In the system, mounted the iso image /root/examine.iso to/mnt/iso directory. And enable automatically mount (permanent mount) after restart system.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+/etc/fstab:
+/root/examine.iso /mnt/iso iso9660 loop 0 0 mount -a
+mount | grep examine</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #78 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure your NFS services. Share the directory by the NFS Shared services.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+/etc/init.d/rpcbind start
+/etc/init.d/nfslock start
+/etc/init.d/nfs start
+chkconfig rpcbind on
+chkconfig nfslock on
+chkconfig nfs on
+showmount -e localhost</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #79 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -1. Find all sizes of 10k file or directory under the /etc directory, and copy to /tmp/findfiles directory.2. Find all the files or directories with Lucy as the owner, and copy to /tmp/findfiles directory.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+(1)find /etc -size 10k -exec cp {} /tmp/findfiles \;
+(2)find / -user lucy -exec cp -a {} /tmp/findfiles \;
+Note: If find users and permissions, you need to use cp - a options, to keep file permissions and user attributes etc.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #80 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -There is a local logical volumes in your system, named with common and belong to VGSRV volume group, mount to the /common directory. The definition of size is 128 MB.Requirement:Extend the logical volume to 190 MB without any loss of data. The size is allowed between 160-160 MB after extending.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+lvextend -L 190M /dev/mapper/vgsrv-common resize2fs /dev/mapper/vgsrv-common</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #81 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -There is a local logical volumes in your system, named with shrink and belong to VGSRV volume group, mount to the /shrink directory. The definition of size is 320MB.Requirement:Reduce the logical volume to 220 MB without any loss of data. The size is allowed between 200-260 MB after reducing.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+cd;umount /shrink
+e2fsck -f /dev/mapper/vgsrv-shrink
+resize2fs /dev/mapper/vgsrv-shrink 220M
+lvreduce -L 220M /dev/mapper/vgsrv-shrink
+mount -a</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #82 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create a swap space, set the size is 600 MB, and make it be mounted automatically after rebooting the system (permanent mount).</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+if=/dev/zero of=/swapfile bs=1M count=600 mkswap /swapfile
+/etc/fstab:
+/swapfile swap swap defaults 0 0 mount -a</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #83 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -According the following requirements to create user, user group and the group members:- A group named admin.- A user named mary, and belong to admin as the secondary group.- A user named alice, and belong to admin as the secondary group.- A user named bobby, bobby's login shell should be non-interactive. Bobby not belong to admin as the secondary group.Mary, Alice, bobby users must be set "password" as the user's password.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+groupadd admin
+useradd -G admin mary
+useradd -G admin alice
+useradd -s /sbin/nologin bobby
+echo "password" | passwd --stdin mary
+echo "password" | passwd --stdin alice
+echo "password" | passwd --stdin bobby</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #84 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -According the following requirements to create a local directory /common/admin.This directory has admin group.This directory has read, write and execute permissions for all admin group members.Other groups and users don't have any permissions.All the documents or directories created in the/common/admin are automatically inherit the admin group.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+mkdir -p /common/admin
+chgrp admin /common/admin
+chmod 2770 /common/admin</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #85 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Update the kernel from ftp://instructor.example.com/pub/updates.According the following requirements:The updated kernel must exist as default kernel after rebooting the system.The original kernel still exists and is available in the system.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+rpm -ivh kernel-firmג€¦
+rpm -ivh kernel...</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #86 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -User mary must configure a task.Requirement: The local time at 14:23 every day echo "Hello World.".</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+crontab -u mary -e
+23 14 * * * echo "Hello World."</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #87 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -The user authentication has been provided by ldap domain in 192.168.0.254. According the following requirements to get ldapuser.-LdapuserX must be able to login your system, X is your hostname number. But the ldapuser's home directory cannot be mounted, until you realize automatically mount by autofs server.- All ldap user's password is "password".</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+system-config-authentication &</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #88 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -According the following requirements, configure autofs service and automatically mount to user's home directory in the ldap domain.- Instructor.example.com (192.168.0.254) has shared /home/guests/ldapuserX home directory to your system by over NFS export, X is your hostname number.- LdapuserX's home directory is exist in the instructor.example.com: /home/ guests/ldapuserX- LdapuserX's home directory must be able to automatically mount to /home/ guests/ldapuserX in your system.- Home directory have write permissions for the corresponding user.However, you can log on to the ldapuser1 - ldapuser99 users after verification. But you can only get your corresponding ldapuser users. If your system's hostname is server1.example.com, you can only get ldapuser1's home directory.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+mkdir ג€"p /home/guests
+cat /etc/auto.master:
+/home/guests /etc/auto.ldap
+cat /etc/auto.ldap:
+ldapuser1 -rw instructor.example.com:/home/guests/ldapuser1
+automatically mount all the user's home directory #* -rw instructor.example.com:/home/guests/&</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #89 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Copy /etc/fstab document to /var/TMP directory. According the following requirements to configure the permission of this document.✑ The owner of this document must be root.✑ This document belongs to root group.✑ User mary have read and write permissions for this document.✑ User alice have read and execute permissions for this document.✑ Create user named bob, set uid is 1000. Bob have read and write permissions for this document.✑ All users has read permission for this document in the system.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+cp /etc/fstab /var/tmp
+chown root:root /var/tmp/fstab
+chmod a-x /var/tmp/fstab
+setfacl ג€"m u:mary:rw /var/tmp/fstab
+setfacl ג€"m u:alice:rx /var/tmp/fstab
+useradd ג€"u 1000 bob</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #90 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure the NTP service in your system.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+system-config-date &</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #91 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure the FTP service in your system, allow remote access to anonymous login and download the program by this service. Service is still running after system rebooting.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+yum install vsftpd
+/etc/init.d/vsftpd start
+chkconfig vsftpd on</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #92 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure your web services, download from http://instructor.example.com/pub/serverX.html And the services must be still running after system rebooting.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+cd /var/www/html
+wget http://instructor.example.com/pub/serverX.html mv serverX.html index.html /etc/init.d/httpd restart chkconfig httpd on</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #93 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create a volume group, and set the size is 500M, the size of single PE is 16M. Create logical volume named lv0 in this volume group, set size is 20 PE, make it as ext3 file system, and mounted automatically under data.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+fdisk /dev/vda
+pvcreate /dev/vda3
+vgcreate ג€"s 16M vg0 /dev/vda3
+lvcreate ג€"n lv0 ג€"l 20 vg0
+mkfs.ext3 /dev/mapper/vg0-lv0
+mkdir /data
+/etc/fstab:
+/dev/mapper/vg0-lv0 /data ext3 defaults 0 0
+mount ג€"a
+mount | grep data</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #94 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Download the document from ftp://instructor.example.com/pub/testfile, find all lines containing [abcde] and redirect to /MNT/answer document, then rearrange the order according the original content.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+Download the file to /tmp first -
+grep [abcde] /tmp/testfile > /mnt/answer</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #95 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -SELinux must be running in the Enforcing mode.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+getenforce      // Check the current mode of SELinux // SELinux runs in enforcing mode // Check getenforce 1 getenforce vim /etc/selinux/config selinux=enforcing   // To temporarily enable SELinux
+: wg
+sestatus</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #96 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -A YUM repository has been provided at http://server.domain11.example.com/pub/x86_64/Server.Configure your system to use this location as a default repository.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+vim/etc/yum.repos/base.repo
+[base]
+name=base
+baseurl= http://server.domain11.example.com/pub/x86_64/Server gpgcheck=0 enable=1
+Save and Exit -
+Use yum list for validation, the configuration is correct if list the package information. If the Yum configuration is not correct then maybe cannot answer the following questions.</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #97 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Resize the logical volume vo and its filesystem to 290 MB. Make sure that the filesystem contents remain intact.Note: Partitions are seldom exactly the same size requested, so a size within the range of 260 MB to 320 MiB is acceptable.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+df -hT
+lvextend -L +100M /dev/vg0/vo
+lvscan
+xfs_growfs /home/  // home is LVM mounted directory
+Note: This step is only need to do in our practice environment, you do not need to do in the real exam resize2fs /dev/vg0/vo // Use this comand to update in the real exam df -hT
+OR -
+e2fsck -f/dev/vg0/vo
+umount /home
+resize2fs /dev/vg0/vo required partition capacity such as 100M lvreduce -l 100M /dev/vg0/vo mount /dev/vg0/vo /home df ג€"Ht</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #98 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create the following users, groups, and group memberships:A group named adminuser.A user natasha who belongs to adminuser as a secondary group A user harry who also belongs to adminuser as a secondary group.A user sarah who does not have access to an interactive shell on the system, and who is not a member of adminuser, natasha, harry, and sarah should all have the password of redhat.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+groupadd sysmgrs
+useradd -G sysmgrs Natasha
+We can verify the newly created user by cat /etc/passwd)
+# useradd -G sysmgrs harry
+# useradd -s /sbin/nologin sarrh
+# passwd Natasha
+# passwd harry
+# passwd sarrah</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #99 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure the permissions of /var/tmp/fstabCopy the file /etc/fstab to /var/tmp/fstab. Configure the permissions of /var/tmp/fstab so that: the file /var/tmp/fstab is owned by the root user. the file /var/tmp/fstab belongs to the group root. the file /var/tmp/fstab should not be executable by anyone. the user natasha is able to read and write /var/tmp/fstab. the user harry can neither write nor read /var/tmp/fstab. all other users (current or future) have the ability to read /var/tmp/fstab.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+cp -a /etc/fstab /var/tmp
+cd /var/tmp
+ls -l
+getfacl /var/tmp/fstab
+chmod ugo-x /var/tmp/fstab
+[ No need to do this, there won't be execute permission for the file by default]
+# setfacl -m u:natasha:rw /var/tmp/fstab # setfacl -m u:harry:0 /var/tmp/fstab(zero)
+[Read permission will be there for all the users, by default. Check it using ls -l /var/tmp/fstab] Verify by
+[ ls -la /var/tmp/fstab]</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #100 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Set cronjob for user natasha to do /bin/echo hiya at 14:23.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# crontab -e -u natasha
+23 14 * * * /bin/echo hiya
+:wq!</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #101 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create a collaborative directory/home/admins with the following characteristics:Group ownership of /home/admins is adminuserThe directory should be readable, writable, and accessible to members of adminuser, but not to any other user. (It is understood that root has access to all files and directories on the system.)Files created in /home/admins automatically have group ownership set to the adminuser group</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+mkdir /home/admins
+chgrp -R adminuser /home/admins
+chmodg+w /home/admins
+chmodg+s /home/admins</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #102 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Install the appropriate kernel update from http://server.domain11.example.com/pub/updates.The following criteria must also be met:The updated kernel is the default kernel when the system is rebootedThe original kernel remains available and bootable on the system</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+ftp server.domain11.example.com Anonymous login
+ftp> cd /pub/updates ftp> ls
+ftp> mget kernel* ftp> bye
+rpm -ivh kernel*
+vim /etc/grub.conf
+Check the updatted kernel is the first kernel and the orginal kernel remains available. set default=0
+:wq!</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #103 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -The system ldap.example.com provides an LDAP authentication service.Your system should bind to this service as follows:The base DN for the authentication service is dc=domain11, dc=example, dc=com LDAP is used to provide both account information and authentication information. The connection should be encrypted using the certificate at http://host.domain11.example.com/pub/domain11.crtWhen properly configured, ldapuserX should be able to log into your system, but will not have a home directory until you have completed the autofs requirement.Username: ldapuser11 -Password: password -</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+system-config-authentication LDAP user DN=dc=domain11,dc=example,dc=com Server= host.domain11.example.com
+Certificate= http://host.domain11.example.com/pub/domain11.crt (enter url carefully, there maybe // or ..)
+LDAP password -
+OK -
+starting sssd
+su -ldapuser11 Display Bash prompt #exit</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #104 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure your system so that it is an NTP client of server.domain11.example.com</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+#system-config-date
+Note: dialog box will open in that
+Check mark Synchronize date and time over network. Remove all the NTP SERVER and click ADD and type server.domain11.example.com
+****************And then press ENTER and the press OK***************</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #105 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Configure autofs to automount the home directories of LDAP users as follows: host.domain11.example.com NFS-exports /home to your system.This filesystem contains a pre-configured home directory for the user ldapuser11 ldapuser11's home directory is host.domain11.example.com /rhome/ldapuser11 ldapuser11's home directory should be automounted locally beneath /rhome as /rhome/ldapuser11Home directories must be writable by their usersldapuser11's password is 'password'.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+vim /etc/auto.master /rhome /etc/auto.misc
+:wq!
+# vim /etc/auto.misc
+ldapuser11 --rw,sync host.domain11.example.com:/rhome/ldpauser11 :wq!
+#service autofs restart
+service autofs reload
+chkconfig autofs on
+su -ldapuser11
+Login ldapuser with home directory
+# exit</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #106 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create a user alex with a userid of 3400. The password for this user should be redhat.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+useradd -u 3400 alex
+passwd alex
+su -alex</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #108 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Locate all the files owned by ira and copy them to the / root/findresults directory.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+# find / -user ira > /root/findresults (if /root/findfiles is a file)
+# mkdir -p /root/findresults
+# find / -user ira -exec cp -a {} /root/findresults\; [ if /root/findfiles is a directory] ls /root/findresults</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #109 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Find all lines in the file /usr/share/dict/words that contain the string seismic. Put a copy of all these lines in their original order in the file /root/wordlist. /root/wordlist should contain no empty lines and all lines must be exact copies of the original lines in /usr/share/dict/words.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+grep seismic /usr/share/dict/words> /root/wordlist</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #110 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create a backup file named /root/backup.tar.bz2, which contains the contents of /usr/local, bar must use the bzip2 compression.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+cd /usr/local
+tar -jcvf /root/backup.tar.bz2*
+mkdir /test
+tar -jxvf /root/backup.tar.bz2 -C /test/</li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #111 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -Create a new logical volume according to the following requirements:The logical volume is named database and belongs to the datastore volume group and has a size of 50 extents.Logical volumes in the datastore volume group should have an extent size of 16 MB.Format the new logical volume with a ext3 filesystem.The logical volume should be automatically mounted under /mnt/database at system boot time.</p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: See explanation below.
+fdisk -cu /dev/vda
+partx -a /dev/vda
+pvcreate /dev/vdax
+vgcreate datastore /dev/vdax -s 16M
+lvcreate-l 50 -n database datastore
+mkfs.ext3 /dev/datastore/database
+mkdir /mnt/database
+mount /dev/datastore/database /mnt/database/ df -Th
+vi /etc/fstab
+/dev/datastore /database /mnt/database/ ext3 defaults 0 0 mount -a</li>
+        </ul>
+    </div>
+</div></body></html>
