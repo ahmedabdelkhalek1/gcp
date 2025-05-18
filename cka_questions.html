@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Questions</title>
+<style>
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 20px;
+}
+.discussion-container {
+    max-width: 800px;
+    margin: 15px auto;
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+}
+.discussion-header {
+    padding: 12px 15px;
+    background-color: #007bff;
+    color: white;
+    border-bottom: 1px solid #dee2e6;
+}
+.discussion-header-text {
+    font-size: 16px;
+    font-weight: 600;
+}
+.discussion-body {
+    padding: 15px;
+}
+.question-body {
+    font-size: 14px;
+    color: #34495e;
+    line-height: 1.5;
+    white-space: pre-line;
+}
+.answer-options {
+    list-style: none;
+    padding: 0;
+    margin: 15px 0 0 0;
+}
+.answer-options li {
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    background: #ffffff;
+    position: relative;
+    transition: all 0.2s;
+    white-space: pre-line;
+}
+.answer-options li:hover {
+    background: #ddd;
+}
+.correct-answer {
+    background-color: #d4edda !important;
+    border-color: #28a745 !important;
+}
+.correct-answer::after {
+    content: "✓";
+    color: #28a745;
+    font-weight: bold;
+    position: absolute;
+    right: 15px;
+}
+.topic-label {
+    background-color: #007bff;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    float: right;
+}
+.suggested-answer {
+    background-color: #fff3cd !important;
+    border-color: #ffc107 !important;
+    white-space: pre-line;
+}
+.suggested-answer::after {
+    content: "★";
+    color: #ffc107;
+    font-weight: bold;
+    position: absolute;
+    right: 15px;
+}
+</style>
+</head>
+<body>
+
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #1 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -<br>Context -<br>You have been asked to create a new ClusterRole for a deployment pipeline and bind it to a specific ServiceAccount scoped to a specific namespace.<br>Task -<br>Create a new ClusterRole named deployment-clusterrole, which only allows to create the following resource types:<br>✑ Deployment<br>✑ Stateful Set<br>✑ DaemonSet<br>Create a new ServiceAccount named cicd-token in the existing namespace app-team1.<br>Bind the new ClusterRole deployment-clusterrole to the new ServiceAccount cicd-token, limited to the namespace app-team1.<br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0000200001.jpg" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image15.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #2 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -<br>Task -<br>Schedule a Pod as follows:<br>✑ Name: kucc8<br>✑ App Containers: 2<br>✑ Container Name/Images:<br>- nginx<br>- consul<br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0002200001.jpg" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image30.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image31.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image32.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #3 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -<br>Task -<br>Create a persistent volume with name app-data, of capacity 2Gi and access mode ReadOnlyMany. The type of volume is hostPath and its location is /srv/app- data.<br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0002500001.jpg" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image33.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image34.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image35.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #4 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -<br>Task -<br>Monitor the logs of pod foo and:<br>✑ Extract log lines corresponding to error file-not-found<br>✑ Write them to /opt/KUTR00101/foo<br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0002700001.jpg" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image36.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image37.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #5 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -<br>Context -<br>An existing Pod needs to be integrated into the Kubernetes built-in logging architecture (e.g. kubectl logs). Adding a streaming sidecar container is a good and common way to accomplish this requirement.<br>Task -<br>Add a sidecar container named sidecar, using the busybox image, to the existing Pod big-corp-app. The new sidecar container has to run the following command:<br>Use a Volume, mounted at /var/log, to make the log file big-corp-app.log available to the sidecar container.<br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0002900001.jpg" style="max-width:100%; margin:10px 0;"><br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0002900002.jpg" style="max-width:100%; margin:10px 0;"><br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0003000001.jpg" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image38.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image39.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image40.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #6 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -<br>Task -<br>From the pod label name=overloaded-cpu, find pods running high CPU workloads and write the name of the pod consuming most CPU to the file /opt/<br>KUTR00401/KUTR00401.txt (which already exists).<br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0003300001.jpg" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image41.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #7 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -<br>Task -<br>A Kubernetes worker node, named wk8s-node-0 is in state NotReady.<br>Investigate why this is the case, and perform any appropriate steps to bring the node to a Ready state, ensuring that any changes are made permanent.<br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0003400002.jpg" style="max-width:100%; margin:10px 0;"><br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0003500001.jpg" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image42.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image43.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image44.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image45.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image46.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #8 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -<br>Task -<br>Create a new PersistentVolumeClaim:<br>✑ Name: pv-volume<br>✑ Class: csi-hostpath-sc<br>✑ Capacity: 10Mi<br>Create a new Pod which mounts the PersistentVolumeClaim as a volume:<br>✑ Name: web-server<br>✑ Image: nginx<br>✑ Mount path: /usr/share/nginx/html<br>Configure the new Pod to have ReadWriteOnce access on the volume.<br>Finally, using kubectl edit or kubectl patch expand the PersistentVolumeClaim to a capacity of 70Mi and record that change.<br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0004000001.jpg" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image47.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image48.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image49.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image50.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image51.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image52.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image53.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #9 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -<br>Task -<br>Create a new nginx Ingress resource as follows:<br>✑ Name: pong<br>✑ Namespace: ing-internal<br>✑ Exposing service hello on path /hello using service port 5678<br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0004500001.jpg" style="max-width:100%; margin:10px 0;"><br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0004500005.jpg" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image54.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image55.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #10 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION<br>-<br>Task<br>-<br>Create a new nginx Ingress resource as follows:<br>•	Name: ping<br>•	Namespace: ing-internal<br>•	Exposing service hi on path /hi using service port 5678<br><br><img src="https://img.examtopics.com/cka/image1.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image2.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image3.png" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: apiVersion: v1 kind: PersistentVolume metadata: name: app-data spec: capacity: storage: 2Gi accessModes: - ReadOnlyMany hostPath: path: "/srv/app-data" </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #11 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION<br>-<br>Task<br>-<br>Create a new NetworkPolicy named allow-port-from-namespace in the existing namespace echo.<br>Ensure that the new NetworkPolicy allows Pods in namespace internal to connect to port 9200/tcp of Pods in namespace echo.<br>Further ensure that the new NetworkPolicy:<br>•	does not allow access to Pods, which don't listen on port 9200/tcp<br>•	does not allow access from Pods, which are not in namespace internal<br><br><img src="https://img.examtopics.com/cka/image4.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image5.png" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image6.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #12 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -<br>Task -<br>Set the node named ek8s-node-0 as unavailable and reschedule all the pods running on it.<br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0000300002.jpg" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image16.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #13 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION<br>-<br>Task<br>-<br>Schedule a Pod as follows:<br>•	Name: kucc1<br>•	App Containers: 2<br>•	Container Name/images:<br>o	  redis<br>o	  consul<br><br><img src="https://img.examtopics.com/cka/image7.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image8.png" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: apiVersion: v1 kind: Pod metadata: name: nginx-kusc00401 spec: containers: - name: nginx-kusc00401 image: nginx nodeSelector: disk=ssd </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #14 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION<br>-<br>Task<br>-<br>Schedule a pod as follows:<br>•	Name: nginx-kusc00401<br>•	Image: nginx<br>•	Node selector: disk=spinning<br><br><img src="https://img.examtopics.com/cka/image9.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image10.png" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: apiVersion: v1 kind: Pod metadata: name: nginx-kusc00401 spec: containers: - name: nginx-kusc00401 image: nginx nodeSelector: disk=spinning </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #15 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION<br>-<br>Task<br>-<br>Scale the deployment guestbook to 5 pods.<br><br><img src="https://img.examtopics.com/cka/image11.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image12.png" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: apiVersion: v1 kind: Pod metadata: name: nginx-kusc00401 spec: containers: - name: nginx-kusc00401 image: nginx nodeSelector: disk=ssd </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #16 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION<br>-<br>Task<br>-<br>Create a persistent volume with name app-data, of capacity 2Gi and access mode ReadWriteOnce. The type of volume is hostPath and its location is /srv/app-data.<br><br><img src="https://img.examtopics.com/cka/image13.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image14.png" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: apiVersion: v1 kind: PersistentVolume metadata: name: app-data spec: capacity: storage: 2Gi accessModes: - ReadOnlyMany hostPath: path: "/srv/app-data" </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #17 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -<br>Task -<br>Given an existing Kubernetes cluster running version 1.22.1, upgrade all of the Kubernetes control plane and node components on the master node only to version 1.22.2.<br>Be sure to drain the master node before upgrading it and uncordon it after the upgrade.<br>You are also expected to upgrade kubelet and kubectl on the master node.<br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0000400002.jpg" style="max-width:100%; margin:10px 0;"><br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0000500001.jpg" style="max-width:100%; margin:10px 0;"><br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0000600001.jpg" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image17.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image18.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #18 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -<br>Task -<br>First, create a snapshot of the existing etcd instance running at https://127.0.0.1:2379, saving the snapshot to /var/lib/backup/etcd-snapshot.db.<br>Next, restore an existing, previous snapshot located at /var/lib/backup/etcd-snapshot-previous.db.<br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0000900001.jpg" style="max-width:100%; margin:10px 0;"><br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0001000001.jpg" style="max-width:100%; margin:10px 0;"><br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0001000002.jpg" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image19.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #19 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -<br>Task -<br>Create a new NetworkPolicy named allow-port-from-namespace in the existing namespace fubar.<br>Ensure that the new NetworkPolicy allows Pods in namespace internal to connect to port 9000 of Pods in namespace fubar.<br>Further ensure that the new NetworkPolicy:<br>✑ does not allow access to Pods, which don't listen on port 9000<br>✑ does not allow access from Pods, which are not in namespace internal<br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0001200001.jpg" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image20.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image21.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #20 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -<br>Task -<br>Reconfigure the existing deployment front-end and add a port specification named http exposing port 80/tcp of the existing container nginx.<br>Create a new service named front-end-svc exposing the container port http.<br>Configure the new service to also expose the individual Pods via a NodePort on the nodes on which they are scheduled.<br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0001500001.jpg" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image22.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image23.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image24.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #21 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -<br>Task -<br>Scale the deployment presentation to 3 pods.<br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0001700002.jpg" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image25.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #22 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -<br>Task -<br>Schedule a pod as follows:<br>✑ Name: nginx-kusc00401<br>✑ Image: nginx<br>✑ Node selector: disk=ssd<br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0001900001.jpg" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image26.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image27.png" style="max-width:100%; margin:10px 0;"><br><br><img src="https://img.examtopics.com/cka/image28.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div>
+<div class="discussion-container">
+    <div class="discussion-header">
+        <div class="discussion-header-text">
+            Question #23 | <span class="topic-label">Topic 1</span>
+        </div>
+    </div>
+    <div class="discussion-body">
+        <p class="question-body">SIMULATION -<br>Task -<br>Check to see how many nodes are ready (not including nodes tainted NoSchedule) and write the number to /opt/KUSC00402/kusc00402.txt.<br><br><img src="https://www.examtopics.com/assets/media/exam-media/04318/0002100001.jpg" style="max-width:100%; margin:10px 0;"></p>
+        <ul class="answer-options">
+                <li class="suggested-answer">A. Suggested Answer: <br><img src="https://img.examtopics.com/cka/image29.png" style="max-width:100%; margin:10px 0;"> </li>
+        </ul>
+    </div>
+</div></body></html>
