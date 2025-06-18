@@ -304,6 +304,15 @@
             <button class="start-btn" onclick="window.location.href='EX200_questions.html'">Start Practice</button>
           </div>
         </div>
+        <div class="exam-card">
+          <div class="exam-card-header EX-200-header">Professional Developer Exam</div>
+          <div class="exam-card-body">
+            Test your knowledge of Developer Exam.
+          </div>
+          <div class="exam-card-footer">
+            <button class="start-btn" onclick="window.location.href='Developer_questions.html'">Start Practice</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -436,27 +445,6 @@
       document.getElementById('questions-container').style.display = 'none';
       document.getElementById('welcome-screen').style.display = 'flex';
     }
-    function loadHtmlPage(htmlFile) {
-      document.getElementById('welcome-screen').style.display = 'none';
-      const questionsContainer = document.getElementById('questions-container');
-      questionsContainer.style.display = 'block';
-      
-      // Create a back button first
-      questionsContainer.innerHTML = '<button class="back-btn" onclick="goToWelcomeScreen()">Back to Welcome Screen</button>';
-      
-      // Create an iframe to load the HTML file
-      const iframe = document.createElement('iframe');
-      iframe.src = htmlFile;
-      iframe.style.width = '100%';
-      iframe.style.height = 'calc(110vh - 100px)'; // Adjust height to leave room for back button
-      iframe.style.width = '100%';
-      iframe.style.border = 'none';
-      iframe.style.flex = '1';
-      
-      // Add iframe to the container
-      questionsContainer.appendChild(iframe);
-    }
-
     // --------------------------
     // Search Functionality
     // --------------------------
